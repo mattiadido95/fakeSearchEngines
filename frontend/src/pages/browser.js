@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 import {
   Container,
   Avatar,
@@ -16,58 +17,72 @@ import {
   TextField,
   InputAdornment,
   SvgIcon,
-  PerfectScrollbar,
+  IconButton,
 } from "@mui/material";
 import { DashboardLayout } from "../components/dashboard-layout";
 import { customers } from "../__mocks__/customers";
 import { Search as SearchIcon } from "../icons/search";
+import documents from "./data.json";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const Page = () => (
-  <>
-    <Head>
-      <title>Browser</title>
-    </Head>
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 1,
-        py: 8,
-      }}
-    >
-      <Container maxWidth={false}>
-        <Box sx={{ mt: 3 }}>
-          <Card>
-            <CardContent>
-              <Box sx={{ flexDirection: "row"}}>
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SvgIcon color="action" fontSize="small">
-                          <SearchIcon />
-                        </SvgIcon>
-                      </InputAdornment>
-                    ),
-                  }}
-                  placeholder="Search documents"
-                  variant="outlined"
-                />
-                <Button variant="contained" startIcon={<SearchIcon />}>
-                  SEARCH
-                </Button>
-              </Box>
-            </CardContent>
-          </Card>
-        </Box>
+const Page = () => {
+  const [documentsList, setDocumentsList] = useState([]);
 
-        <Box sx={{ mt: 3 }}>
-          <Card>
-            <Box sx={{ minWidth: 1050 }}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    {/* <TableCell padding="checkbox">
+  const loadDocuments = () => {
+    setDocumentsList(documents.data);
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Browser</title>
+      </Head>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          py: 8,
+        }}
+      >
+        <Container maxWidth={false}>
+          <Box sx={{ mt: 3 }}>
+            <Card>
+              <CardContent>
+                <Box sx={{ display: "flex", flexDirection: "row" }}>
+                  <TextField
+                    fullWidth
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SvgIcon color="action" fontSize="small">
+                            <SearchIcon />
+                          </SvgIcon>
+                        </InputAdornment>
+                      ),
+                    }}
+                    placeholder="Search Documents"
+                    variant="outlined"
+                  />
+                  <Button
+                    size="small"
+                    variant="text"
+                    startIcon={<SearchIcon />}
+                    onClick={() => loadDocuments()}
+                  >
+                    SEARCH
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          </Box>
+
+          <Box sx={{ mt: 3 }}>
+            <Card>
+              <Box sx={{ minWidth: 1050 }}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell padding="checkbox">
                         <Checkbox
                           checked={selectedCustomerIds.length === customers.length}
                           color="primary"
@@ -78,68 +93,57 @@ const Page = () => (
                           onChange={handleSelectAll}
                         />
                       </TableCell> */}
-                    <TableCell>Doc ID</TableCell>
-                    <TableCell>Document Title</TableCell>
-                    <TableCell>Preview</TableCell>
-                    <TableCell>Action</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {/* {customers.slice(0, limit).map((customer) => (
+                      <TableCell>Doc ID</TableCell>
+                      <TableCell>Document Title</TableCell>
+                      <TableCell>Preview</TableCell>
+                      <TableCell>Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {documentsList.map((document) => (
                       <TableRow
                         hover
-                        key={customer.id}
-                        selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                        key={document?.doc_id}
+                        /* selected={selectedCustomerIds.indexOf(customer.id) !== -1} */
                       >
-                        <TableCell padding="checkbox">
+                        {/* <TableCell padding="checkbox">
                           <Checkbox
-                            checked={selectedCustomerIds.indexOf(customer.id) !== -1}
+                           checked={selectedCustomerIds.indexOf(customer.id) !== -1}
                             onChange={(event) => handleSelectOne(event, customer.id)}
                             value="true"
                           />
-                        </TableCell>
-                        <TableCell>
-                          <Box
-                            sx={{
-                              alignItems: "center",
-                              display: "flex",
-                            }}
-                          >
-                            <Avatar src={customer.avatarUrl} sx={{ mr: 2 }}>
-                              {getInitials(customer.name)}
-                            </Avatar>
-                            <Typography color="textPrimary" variant="body1">
-                              {customer.name}
-                            </Typography>
-                          </Box>
-                        </TableCell>
-                        <TableCell>{customer.email}</TableCell>
-                        <TableCell>
-                          {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
-                        </TableCell>
-                        <TableCell>{customer.phone}</TableCell>
-                        <TableCell>{format(customer.createdAt, "dd/MM/yyyy")}</TableCell>
-                      </TableRow>
-                    ))} */}
-                </TableBody>
-              </Table>
-            </Box>
+                        </TableCell> */}
 
-            <TablePagination
-              component="div"
-              count={100}
-              /* onPageChange={handlePageChange} */
-              /* onRowsPerPageChange={handleLimitChange} */
-              page={10}
-              rowsPerPage={10}
-              rowsPerPageOptions={[5, 10, 25]}
-            />
-          </Card>
-        </Box>
-      </Container>
-    </Box>
-  </>
-);
+                        <TableCell>{document?.doc_id}</TableCell>
+                        <TableCell>{document?.document_title}</TableCell>
+                        <TableCell>{document?.about}</TableCell>
+                        <TableCell>
+                          <IconButton color="primary" aria-label="upload picture" component="label">
+                            <ArrowForwardIcon />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </Box>
+
+              <TablePagination
+                component="div"
+                count={100}
+                /* onPageChange={handlePageChange} */
+                /* onRowsPerPageChange={handleLimitChange} */
+                page={10}
+                rowsPerPage={10}
+                rowsPerPageOptions={[5, 10, 25]}
+              />
+            </Card>
+          </Box>
+        </Container>
+      </Box>
+    </>
+  );
+};
 
 Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
