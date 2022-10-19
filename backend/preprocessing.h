@@ -5,10 +5,10 @@
 
 using namespace std;
 
-class preprocessing
+class Preprocessing
 {
 public:
     vector<string> tokenization();
     vector<string> stopwords();
-    vector<string> stemming()
-}
+    vector<string> stemming();
+};
