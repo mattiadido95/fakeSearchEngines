@@ -1,8 +1,11 @@
 //g++ -o main.exe main.cpp
 #include <iostream>
-#include<fstream>
-#include<string>
-#
+#include <fstream>
+#include <string>
+#include <vector>
+#include <regex>
+#include <algorithm> //serve per lower o upper
+#include "preprocessing.h"
 
 using namespace std;
 
@@ -11,11 +14,12 @@ int main(){
     int c;
     c = 0;
 
-    for (string line; getline(filein, line); ) 
+    for (string doc; getline(filein, doc); ) 
     {
-        cout << line << endl;
-        c++;
-        if (c == 1024){break;}
+        Preprocessing p(doc);
+        c ++;
+        if (c == 5)
+            break;
     }
     
     filein.close();
