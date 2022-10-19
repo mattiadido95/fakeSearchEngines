@@ -1,13 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class preprocessing
 {
 public:
-    tokenization();
-    stopwords();
-    stemming()
+    vector<string> tokenization();
+    vector<string> stopwords();
+    vector<string> stemming()
 }
