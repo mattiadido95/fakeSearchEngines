@@ -31,7 +31,7 @@ const Page = () => {
 
   useEffect(() => {}, []);
 
-  const endpoint = "http://localhost:9080/list";
+  const endpoint = "http://127.0.0.1:9080/list";
 
   const loadDocuments = () => {
     fetch(endpoint, {

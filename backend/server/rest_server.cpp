@@ -39,6 +39,31 @@ void printCookies(const Http::Request &req)
     std::cout << "]" << std::endl;
 }
 
+void logRequest(const Http::Request &request)
+{
+    auto req = request.headers();
+}
+
+void printLog()
+{
+    cout << "sono qui" << std::endl;
+    std::cout.flush();
+}
+
+string prepareResponse()
+{
+    ifstream ifs("data.json");
+    IStreamWrapper isw(ifs);
+    Document d;
+    d.ParseStream(isw);
+
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    d.Accept(writer);
+
+    return buffer.GetString();
+}
+
 class StatsEndpoint
 {
 public:
@@ -72,56 +97,9 @@ private:
     {
         using namespace Http;
 
-        ifstream ifs("data.json");
-        IStreamWrapper isw(ifs);
-        Document d;
-        d.ParseStream(isw);
 
-        rapidjson::StringBuffer buffer;
-        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-        d.Accept(writer);
-
-        response.headers().add<Pistache::Http::Header::AccessControlAllowOrigin>("*");
-        response.headers().add<Pistache::Http::Header::AccessControlAllowMethods>("POST");
-        response.headers().add<Pistache::Http::Header::ContentType>("application/json");
-
-        response.send(Http::Code::Ok, buffer.GetString());
+        response.send(Http::Code::Ok, prepareResponse());
     }
-
-    class Metric
-    {
-    public:
-        explicit Metric(std::string name, int initialValue = 1)
-            : name_(std::move(name)), value_(initialValue)
-        {
-        }
-
-        int incr(int n = 1)
-        {
-            int old = value_;
-            value_ += n;
-            return old;
-        }
-
-        int value() const
-        {
-            return value_;
-        }
-
-        const std::string &name() const
-        {
-            return name_;
-        }
-
-    private:
-        std::string name_;
-        int value_;
-    };
-
-    using Lock = std::mutex;
-    using Guard = std::lock_guard<Lock>;
-    Lock metricsLock;
-    std::vector<Metric> metrics;
 
     std::shared_ptr<Http::Endpoint> httpEndpoint;
     Rest::Router router;
