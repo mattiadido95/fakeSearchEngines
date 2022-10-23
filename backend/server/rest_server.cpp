@@ -46,7 +46,7 @@ void logRequest(const Http::Request &request)
 
 void printLog()
 {
-    cout << "sono qui" << std::endl;
+    cout << "request" << std::endl;
     std::cout.flush();
 }
 
@@ -97,8 +97,13 @@ private:
     {
         using namespace Http;
 
+        printLog();
 
-        response.send(Http::Code::Ok, prepareResponse());
+        response.headers().add<Pistache::Http::Header::AccessControlAllowOrigin>("*");
+        response.headers().add<Pistache::Http::Header::AccessControlAllowMethods>("POST");
+        response.headers().add<Pistache::Http::Header::ContentType>(MIME(Application, Json));
+
+        response.send(Http::Code::Ok, prepareResponse(), MIME(Application, Json));
     }
 
     std::shared_ptr<Http::Endpoint> httpEndpoint;

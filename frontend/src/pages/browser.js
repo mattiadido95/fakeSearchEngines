@@ -31,31 +31,14 @@ const Page = () => {
 
   useEffect(() => {}, []);
 
-  const endpoint = "http://127.0.0.1:9080/list";
+  const endpoint = "http://localhost:9080/list";
 
   const loadDocuments = () => {
-    fetch(endpoint, {
-      mode: "no-cors",
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setDocumentsList(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
-
-  /* const loadDocuments = () => {
-    axios.post(endpoint).then((response) => {
-      setDocumentsList(data);
+    axios.post(endpoint).then((res) => {
+      console.log(res.data);
+      setDocumentsList(res.data.data);
     });
-  }; */
+  };
 
   return (
     <>
