@@ -1,3 +1,4 @@
+#include <set>
 //g++ -o main.exe main.cpp
 #include <iostream>
 #include <fstream>
@@ -8,8 +9,13 @@
 #include "preprocessing.h"
 
 using namespace std;
+int main()
+{
+    std::string aString = "abbc";
 
-int main(){
-    Preprocessing p("../data/collection.tsv");
+    //create set from std::string
+    std::set<char> mySet( aString.begin() , aString.end() );
+    
+    std::cout<< mySet.;
     return 0;
 }
