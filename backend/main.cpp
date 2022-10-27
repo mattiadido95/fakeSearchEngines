@@ -1,4 +1,4 @@
-//g++ -o main.exe main.cpp
+//g++ -o main.out -I ./utility *.cpp utility/*.cpp
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,24 +6,14 @@
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include "preprocessing.h"
+#include "utility/FileManager.h"
 
 using namespace std;
 
 int main(){
-    ifstream filein("../data/collection.tsv");
-    int c;
-    c = 0;
-
-    for (string doc; getline(filein, doc); ) 
-    {
-        Preprocessing p(doc);
-        c ++;
-        if (c == 5)
-            break;
-    }
-    
-    filein.close();
-    
+    FileManager fm("../data/collection.tsv");
+    string result = fm.readLine();
+    cout << result << endl;
     //preprocessing
     return 0;
 }
