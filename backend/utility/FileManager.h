@@ -10,6 +10,7 @@ class FileManager{
         ifstream file;
     public:
         FileManager(string path);
-        vector<string> FileManager::readFile();
-        string * FileManager::readLine();
+        vector<string> readFile();
+        string readLine();
+        ~FileManager();
 };
