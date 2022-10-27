@@ -7,8 +7,11 @@ using namespace std;
 
 class Preprocessing
 {
+private:
+    vector<string> tokenization(string);
+    vector<string> getStopwords();
+    // stopwords();
+    // stemming();
 public:
-    vector<string> tokenization();
-    vector<string> stopwords();
-    vector<string> stemming();
+    Preprocessing(string);
 };
