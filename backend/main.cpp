@@ -53,39 +53,45 @@ string *vectorToArray(vector<string> tokenList)
 
 int main()
 {
-     ifstream filein("../data/collection.tsv");
-     int c;
-     c = 0;
+    ifstream filein("../data/collection.tsv");
+    int c;
+    c = 0;
 
-     for (string line; getline(filein, line);)
-     {
-         cout << line << endl;
-         c++;
-         if (c == 1024)
-         {
-             break;
-         }
-     }
+    for (string line; getline(filein, line);)
+    {
+        cout << line << endl;
+        c++;
+        if (c == 1024)
+        {
+            break;
+        }
+    }
 
-     filein.close();
+    filein.close();
 
     // preprocessing
     Preprocessing preprocess;
-    // vector<string> stopwords = preprocess.stopwords();
+    vector<string> stopwords = preprocess.stopwords();
 
-    string stopwords[] = {"Geeks", "For", "GeeksForGeek"};
-    int size = sizeof(stopwords) / sizeof(stopwords[0]);
-    sort(stopwords, stopwords + size);
-    string str = "For";
+    // get string list tokenized
 
-    if (binary_search(stopwords, stopwords + size, str))
-    {
-        cout << "found" << endl;
-    }
-    else
-    {
-        cout << "not found" << endl;
-    }
+    // get stopwords list
+
+    // create for loop to remove stopwords from tokens list
+
+    // string stopwords[] = {"Geeks", "For", "GeeksForGeek"};
+    // int size = sizeof(stopwords) / sizeof(stopwords[0]);
+    // sort(stopwords, stopwords + size);
+    // string str = "For";
+
+    // if (binary_search(stopwords, stopwords + size, str))
+    // {
+    //     cout << "found" << endl;
+    // }
+    // else
+    // {
+    //     cout << "not found" << endl;
+    // }
 
     return 0;
 }
