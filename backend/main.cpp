@@ -39,23 +39,35 @@ void binarySearch(string arr[], int size)
         cout << "\nString not Found in array";
 }
 
+string *vectorToArray(vector<string> tokenList)
+{
+    int arraySize = tokenList.size();
+    string *arrayString = new string[arraySize];
+    for (int i = 0; i < arraySize; i++)
+    {
+        arrayString[i] = tokenList[i];
+    }
+
+    return arrayString;
+}
+
 int main()
 {
-    // ifstream filein("../data/collection.tsv");
-    // int c;
-    // c = 0;
+     ifstream filein("../data/collection.tsv");
+     int c;
+     c = 0;
 
-    // for (string line; getline(filein, line);)
-    // {
-    //     cout << line << endl;
-    //     c++;
-    //     if (c == 1024)
-    //     {
-    //         break;
-    //     }
-    // }
+     for (string line; getline(filein, line);)
+     {
+         cout << line << endl;
+         c++;
+         if (c == 1024)
+         {
+             break;
+         }
+     }
 
-    // filein.close();
+     filein.close();
 
     // preprocessing
     Preprocessing preprocess;
