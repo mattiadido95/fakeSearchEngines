@@ -1,10 +1,11 @@
 #include "preprocessing.h"
-#include "PorterStemming.cpp"
+ //#include "PorterStemming.cpp"
 #include <string>
 #include <iostream>
 #include <vector>
 #include <regex>
 #include <algorithm> //serve per lower o upper
+#include <map>
 
 using namespace std;
 
@@ -29,12 +30,20 @@ vector<string> Preprocessing::tokenization(string doc){
     return words;
 
 }
-
+map<string, int>Preprocessing::removeDuplicate(vector<string> vocabulary){
+    map<string, int> m;
+    for(int i = 0; i< vocabulary.size(); i++)
+    {
+          m.insert(pair<string, int>(vocabulary[i], 0));
+    }
+    return m;
+}
 
 Preprocessing::Preprocessing(string path){
     vector<string> words;
     vector<string> support;
-    vector<string> wordsdocs;  
+    vector<string> wordsdocs; 
+    map<string, int> cleanVocabulary; 
     ifstream filein(path);
     int c;
     
@@ -44,10 +53,18 @@ Preprocessing::Preprocessing(string path){
         support.reserve( words.size() + wordsdocs.size() );
         support.insert( support.end(), wordsdocs.begin(), wordsdocs.end());
         support.insert( support.end(), words.begin(), words.end());
-        wordsdocs = support;   
-
+        wordsdocs= support;   
+        c++;
+        if (c == 10){
+            break;}
     }
+        filein.close();
+
+   
+    //stopword
+    //lemmatizzazione
+    //duplicate
+        cleanVocabulary = removeDuplicate(wordsdocs);
     
-    filein.close();
     
 }
