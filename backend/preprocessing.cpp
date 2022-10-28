@@ -66,6 +66,7 @@ Preprocessing::Preprocessing(string path)
     ifstream filein(path);
     int c;
 
+    cout << "start import documents ..." << endl;
     for (string doc; getline(filein, doc);)
     {
         words = tokenization(doc);
@@ -82,14 +83,18 @@ Preprocessing::Preprocessing(string path)
     filein.close();
 
     // stopword
+
     // lemmatizzazione
+
     // duplicate
+    cout << "start cleaning vocabulary ..." << endl;
     cleanVocabulary = removeDuplicate(wordsdocs);
 
     // get string list tokenized
     // vector<string> tokens = p.getTokens();
 
     // get stopwords list
+    cout << "start import stopword list ..." << endl;
     vector<string> stopwords = getStopwords();
 
     // create for loop to remove stopwords from tokens list
