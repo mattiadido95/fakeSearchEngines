@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -16,5 +17,5 @@ private:
     map<string, int> removeDuplicate(vector<string>);
 
 public:
-    Preprocessing(string);s
+    Preprocessing(string);
 };

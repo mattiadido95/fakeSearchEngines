@@ -31,6 +31,7 @@ vector<string> Preprocessing::tokenization(string doc)
 
     return words;
 }
+
 map<string, int> Preprocessing::removeDuplicate(vector<string> vocabulary)
 {
     map<string, int> m;
@@ -73,7 +74,7 @@ Preprocessing::Preprocessing(string path)
         support.insert(support.end(), words.begin(), words.end());
         wordsdocs = support;
         c++;
-        if (c == 10)
+        if (c == 3)
         {
             break;
         }
