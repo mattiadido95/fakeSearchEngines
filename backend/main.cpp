@@ -6,6 +6,7 @@
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include "preprocessing.h"
+#include "utility/FileManager.h"
 
 using namespace std;
 
@@ -13,6 +14,10 @@ int main()
 {
     // start preprocessing
     Preprocessing p("../data/collection.tsv");
+
+    FileManager fm("../data/collection.tsv");
+    string result = fm.readLine();
+    cout << result << endl;
 
     // string stopwords[] = {"Geeks", "For", "GeeksForGeek"};
     // int size = sizeof(stopwords) / sizeof(stopwords[0]);
