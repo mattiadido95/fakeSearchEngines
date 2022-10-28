@@ -11,8 +11,12 @@
 using namespace std;
 
 int main(){
-    FileManager fm("../data/collection.tsv");
+    cout << "Ciao" << endl;
+    FileManager fm("../stop.txt");
+    vector<string> res = fm.readFile();
     string result = fm.readLine();
+    cout << result << endl;
+    result = fm.readLine();
     cout << result << endl;
     //preprocessing
     return 0;
