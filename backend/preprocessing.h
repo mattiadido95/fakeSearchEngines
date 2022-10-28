@@ -12,6 +12,9 @@ private:
     vector<string> getStopwords();
     // stopwords();
     // stemming();
+    // remove duplicate
+    map<string, int> removeDuplicate(vector<string>);
+
 public:
-    Preprocessing(string);
+    Preprocessing(string);s
 };
