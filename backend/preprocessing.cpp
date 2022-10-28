@@ -21,7 +21,7 @@ vector<string> Preprocessing::tokenization(string doc){
     for (; it != reg_end; ++it) {
         if (it->str() == "")
                 continue;
-        words.push_back(it->str());
+        words.push_back(it->str()+"\0");
     }
     
     //for(int i = 0; i < words.size(); i++)
@@ -38,6 +38,29 @@ map<string, int>Preprocessing::removeDuplicate(vector<string> vocabulary){
     }
     return m;
 }
+vector<string> Preprocessing::remuveWordstop(vector<string> words)
+{
+    ifstream filein("../data/stop_words_english.txt");
+    int c;
+    vector<string> words_nostw;
+    string ciao = "able";
+    for (string wordstop; getline(filein, wordstop); ) 
+    {
+        
+        for(int i = 0; i< words.size(); i++){
+            cout<<wordstop[8]<<endl;
+            if (ciao.compare("able")== 0){
+                cout<<"sono dentro"<<endl;
+                words_nostw.push_back(words[i]);}
+            break;
+        }
+        break;
+    }
+    for(int i = 0; i<words_nostw.size(); i++)
+        cout<<words_nostw[i]<<endl;    
+    return words_nostw;
+
+}
 
 Preprocessing::Preprocessing(string path){
     vector<string> words;
@@ -50,13 +73,21 @@ Preprocessing::Preprocessing(string path){
     for (string doc; getline(filein, doc); ) 
     {
         words= tokenization(doc);
+        words = remuveWordstop(words);
+        string id = words[0];
+        words.erase(words.begin());
+
+       
+        support.clear();
         support.reserve( words.size() + wordsdocs.size() );
         support.insert( support.end(), wordsdocs.begin(), wordsdocs.end());
         support.insert( support.end(), words.begin(), words.end());
         wordsdocs= support;   
         c++;
-        if (c == 10){
-            break;}
+        if (c == 5 )
+            break;
+
+        
     }
         filein.close();
 
