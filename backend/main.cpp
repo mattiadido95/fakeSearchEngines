@@ -10,8 +10,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     // start preprocessing
     Preprocessing p("../data/collection.tsv");
 
@@ -20,20 +19,6 @@ int main()
     cout << endl
          << "print first document ->" << endl
          << result << endl;
-
-    // string stopwords[] = {"Geeks", "For", "GeeksForGeek"};
-    // int size = sizeof(stopwords) / sizeof(stopwords[0]);
-    // sort(stopwords, stopwords + size);
-    // string str = "For";
-
-    // if (binary_search(stopwords, stopwords + size, str))
-    // {
-    //     cout << "found" << endl;
-    // }
-    // else
-    // {
-    //     cout << "not found" << endl;
-    // }
 
     return 0;
 }
