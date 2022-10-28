@@ -17,7 +17,9 @@ int main()
 
     FileManager fm("../data/collection.tsv");
     string result = fm.readLine();
-    cout << result << endl;
+    cout << endl
+         << "print first document ->" << endl
+         << result << endl;
 
     // string stopwords[] = {"Geeks", "For", "GeeksForGeek"};
     // int size = sizeof(stopwords) / sizeof(stopwords[0]);

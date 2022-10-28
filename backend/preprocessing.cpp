@@ -6,6 +6,7 @@
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include <map>
+#include "utility/utility.h"
 
 using namespace std;
 
@@ -51,7 +52,9 @@ vector<string> Preprocessing::getStopwords()
     {
         getline(sw, lineread);
         stopwords.push_back(lineread);
+        // cout << lineread << endl;
     }
+
     sw.close();
 
     return stopwords;
@@ -64,11 +67,12 @@ Preprocessing::Preprocessing(string path)
     vector<string> wordsdocs;
     map<string, int> cleanVocabulary;
     ifstream filein(path);
-    int c;
+    int c = 0;
 
-    cout << "start import documents ..." << endl;
+    cout << "- start import documents ..." << endl;
     for (string doc; getline(filein, doc);)
     {
+        cout << "   -> start import documents n." << c << endl;
         words = tokenization(doc);
         support.reserve(words.size() + wordsdocs.size());
         support.insert(support.end(), wordsdocs.begin(), wordsdocs.end());
@@ -82,20 +86,28 @@ Preprocessing::Preprocessing(string path)
     }
     filein.close();
 
-    // stopword
+    // tokens list
+    cout << "   -> number of stopword imported " << words.size() << endl;
 
     // lemmatizzazione
 
     // duplicate
-    cout << "start cleaning vocabulary ..." << endl;
+    cout << "- start cleaning vocabulary ..." << endl;
     cleanVocabulary = removeDuplicate(wordsdocs);
 
-    // get string list tokenized
-    // vector<string> tokens = p.getTokens();
-
     // get stopwords list
-    cout << "start import stopword list ..." << endl;
+    cout << "- start import stopword list ..." << endl;
     vector<string> stopwords = getStopwords();
+    cout << "   -> number of stopword imported " << stopwords.size() << endl;
 
-    // create for loop to remove stopwords from tokens list
+    // // create for loop to remove stopwords from tokens list
+    // string *tokens_array = vector_to_array(words);
+    // show_array(tokens_array, words.size());
+    // for (vector<string>::iterator w = stopwords.begin(); w != stopwords.end(); w++)
+    // {
+    //     cout << "- find word: " << *w << endl;
+    //     cout << binary_search(tokens_array, *w, words.size()) << endl;
+    // }
+
+    my_search(stopwords, words);
 }
