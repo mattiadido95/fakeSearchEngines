@@ -1,0 +1,3 @@
+C:/GitHub/Computer Vision/Project/fakeSearchEngines/backend/cmake-build-debug/CMakeFiles/backend.dir
+C:/GitHub/Computer Vision/Project/fakeSearchEngines/backend/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/GitHub/Computer Vision/Project/fakeSearchEngines/backend/cmake-build-debug/CMakeFiles/rebuild_cache.dir

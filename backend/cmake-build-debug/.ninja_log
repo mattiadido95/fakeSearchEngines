@@ -1,0 +1,18 @@
+# ninja log v5
+3	660	6889278718844580	CMakeFiles/backend.dir/main.cpp.obj	c49e0aaa094242a9
+385	468	6889313743988744	backend.exe	3082adbb2eef16ef
+6	2970	6889278741844432	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
+1	159	6889319325792156	build.ninja	5df71a2d77678bf9
+2	379	6889313743138444	CMakeFiles/backend.dir/PorterStemming.cpp.obj	1557f5abaaf9c8f1
+1	153	6889319325792156	build.ninja	5df71a2d77678bf9
+5	516	6889319331534852	CMakeFiles/backend.dir/PorterStemming.cpp.obj	1557f5abaaf9c8f1
+2	2830	6889319354598269	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
+4	773	6889322032617964	CMakeFiles/backend.dir/main.cpp.obj	c49e0aaa094242a9
+8	2982	6889322054598533	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
+4	875	6889322736931353	CMakeFiles/backend.dir/main.cpp.obj	c49e0aaa094242a9
+3	825	6889324188666414	CMakeFiles/backend.dir/main.cpp.obj	c49e0aaa094242a9
+9	3069	6889324210983950	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
+4	638	6889325005976054	CMakeFiles/backend.dir/PorterStemming.cpp.obj	1557f5abaaf9c8f1
+6	5253	6889325844620484	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
+10	5410	6889325846231374	CMakeFiles/backend.dir/PorterStemming.cpp.obj	1557f5abaaf9c8f1
+9	2869	6889326225298842	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4

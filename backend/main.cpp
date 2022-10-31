@@ -10,6 +10,6 @@
 using namespace std;
 
 int main(){
-    Preprocessing p("../data/collection.tsv");
+    Preprocessing p("../../data/collection.tsv");
     return 0;
 }

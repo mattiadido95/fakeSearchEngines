@@ -1,10 +1,12 @@
 #include <iostream> // std::cin, std::cout
 #include <fstream> // std::ifstream
+
+
 #include<string.h>
 #include<stdlib.h>
 #include<ctype.h>
 #include <stdio.h>
-
+#include <vector>
 using namespace std;
 
 static int k0,k;
@@ -22,8 +24,8 @@ int cons(char a[],int i)
 {
     switch (a[i])
     { case 'a': case 'e': case 'i': case 'o': case 'u': return 0;
-    case 'y': {if (i==k0) return 1; else !cons(a,i-1);}
-    default: return 1;
+        case 'y': {if (i==k0) return 1; else !cons(a,i-1);}
+        default: return 1;
     }
 }
 
@@ -157,7 +159,7 @@ void setto(int len_inc,char *add,char a[])
 
 /*This part matches the suffix passed and checks if the suffix is present in the word*/
 
-int ends(char a[],char * s,int length, int j)
+int ends(char a[],char * s,int length, int j) //lunghezza radice
 {
     int last_w;
     int len=length;
@@ -165,11 +167,11 @@ int ends(char a[],char * s,int length, int j)
     char temp[20];
     memset(temp,0,sizeof(temp));
     for(int m=0;m<=len-1;m++)
-            {
+    {
 
         temp[m]=a[pos];
         pos++;
-        }
+    }
     int r;
     if ((r=strcmp(s,temp))==0){return 1;} /*Compares and returns 1 if suffix found.*/
     else
@@ -203,42 +205,42 @@ void step1ab(char a[],int j)
     if (a[k] == 's')
     {
         if (ends(a,"sses",4,last_w)==1) { k-= 2;} else
-            if (ends(a,"ies",3,last_w)==1) { k-=3;setto(1,"i",a);} else
-                if (a[k-1] != 's') {k--;return;}
+        if (ends(a,"ies",3,last_w)==1) { k-=3;setto(1,"i",a);} else
+        if (a[k-1] != 's') {k--;return;}
     } else
-        if (ends(a,"eed",3,last_w)==1) {if (m(a,last_w,k)>1)k--;} else
-            if ((ends(a,"ed",2,last_w)==1)||(ends(a,"ing",3,last_w)==1))
-            {
-                if ((ends(a,"ed",2,last_w)==1)&&vowelinstem(a,last_w)) { k-=2;}
-                if ((ends(a,"ing",3,last_w)==1)&&vowelinstem(a,last_w)) {k-=3;}
-                j=k;
-                
-                if (ends(a,"at",2,j)==1) { k-=2;setto(3,"ate",a);} else
-                    if (ends(a,"bl",2,j)==1) { k-=2;setto(3,"ble",a);} else
-                        if (ends(a,"iz",2,j)==1) { k-=2;setto(3,"ize",a);} else
-                            if (doublec(a,k) ) { k--; {int ch=a[k]; if (ch == 'l' || ch == 's' || ch == 'z') k++;}}
-            }
-            if((ends(a,"at",2,j)==1) && (ends(a,"bl",2,j)==1) && (ends(a,"iz",2,j)==1))
-            {
-            if (m(a,j,k) == 1 && cvc(k,a,0)) {parameter=1;setto(1,"e",a);}
-            }
-            return;
+    if (ends(a,"eed",3,last_w)==1) {if (m(a,last_w,k)>1)k--;} else
+    if ((ends(a,"ed",2,last_w)==1)||(ends(a,"ing",3,last_w)==1))
+    {
+        if ((ends(a,"ed",2,last_w)==1)&&vowelinstem(a,last_w)) { k-=2;}
+        if ((ends(a,"ing",3,last_w)==1)&&vowelinstem(a,last_w)) {k-=3;}
+        j=k;
+
+        if (ends(a,"at",2,j)==1) { k-=2;setto(3,"ate",a);} else
+        if (ends(a,"bl",2,j)==1) { k-=2;setto(3,"ble",a);} else
+        if (ends(a,"iz",2,j)==1) { k-=2;setto(3,"ize",a);} else
+        if (doublec(a,k) ) { k--; {int ch=a[k]; if (ch == 'l' || ch == 's' || ch == 'z') k++;}}
+    }
+    if((ends(a,"at",2,j)==1) && (ends(a,"bl",2,j)==1) && (ends(a,"iz",2,j)==1))
+    {
+        if (m(a,j,k) == 1 && cvc(k,a,0)) {parameter=1;setto(1,"e",a);}
+    }
+    return;
 }
 
 /*turns terminal y to i when there is another vowel in the stem. */
 
 void step1c(char a[]) {
-     //cout<<"Enter 1C";
-     //cout<<k;
-     
-if (ends(a,"y",1,k) && vowelinstem(a,k))
-{ parameter=1;
-    k-=1;
-    setto(1,"i",a);
-}}
+    //cout<<"Enter 1C";
+    //cout<<k;
 
- 
- /* step2() maps double suffices to single ones. so -ization ( = -ize plus
+    if (ends(a,"y",1,k) && vowelinstem(a,k))
+    { parameter=1;
+        k-=1;
+        setto(1,"i",a);
+    }}
+
+
+/* step2() maps double suffices to single ones. so -ization ( = -ize plus
 -ation) maps to -ize etc. note that the string before the suffix must give
 m() > 0. */
 
@@ -248,37 +250,37 @@ void step2(char a[],int j) {
         switch (a[k-1])
         {
 
-        case 'a': if (ends(a,"ational",7,k)) {k-=7; parameter=1;cout<<"The value is "<<" "<<k; setto(3,"ate",a); break; }
-                  if (ends(a,"tional",6,k)) {k-=6;setto(4,"tion",a); break; }
-                  break;
-        case 'c': if (ends(a,"enci",4,k)) { k-=4;parameter=1;setto(4,"ence",a); break; } else
-                      if (ends(a,"anci",4,k)) { k-=4;parameter=1;setto(4,"ance",a); break; }
-                      break;
-        case 'e': if (ends(a,"izer",4,k)) {{k-=4;parameter=1;setto(3,"ize",a); break; }}
-                  break;
-        case 'l': if (ends(a,"bli",3,k)) {k-=3;parameter=1;setto(3,"ble",a); break; }
-                  if (ends(a,"eli",3,k)) {k-=3;setto(1,"e",a); break; }
-                  if (ends(a,"alli",4,k)) {k-=4;parameter=1;setto(2,"al",a); break; }
-                  if (ends(a,"entli",5,k)) {k-=5;parameter=1;setto(3,"ent",a); break; }
-                  if (ends(a,"ousli",5,k)) {k-=5;parameter=1;setto(3,"ous",a); break; }
-                  break;
-        case 'o': if (ends(a,"ator",4,k)) { k-=4;parameter=1;setto(3,"ate",a); break; }
-                  if (ends(a,"ization",7,k)) { k-=7;parameter=1;setto(3,"ize",a); break; }
-                  if (ends(a,"ation",5,k)) {k-=5;parameter=1;setto(3,"ate",a); break; }
-                  break;
-        case 's': if (ends(a,"alism",5,k)) { k-=5;parameter=1;setto(2,"al",a); break; }
-                  if (ends(a,"iveness",7,k)) { k-=7;parameter=1;setto(3,"ive",a); break; }
-                  if (ends(a,"fulness",7,k)) { k-=7;parameter=1;setto(3,"ful",a); break; }
-                  if (ends(a,"ousness",7,k)) { k-=7;parameter=1;setto(3,"ous",a); break; }
-                  break;
-        case 't': if (ends(a,"aliti",5,k)) { k-=5;parameter=1;setto(2,"al",a); break; }
-                  if (ends(a,"iviti",5,k)) { k-=5;parameter=1;setto(3,"ive",a); break; }
-                  if (ends(a,"biliti",6,k)) { k-=6;parameter=1;setto(3,"ble",a); break; }
-                  break;
-        case 'g': if (ends(a,"logi",4,k)) { k-=4;parameter=1;setto(3,"log",a); break; }
+            case 'a': if (ends(a,"ational",7,k)) {k-=7; parameter=1;cout<<"The value is "<<" "<<k; setto(3,"ate",a); break; }
+                if (ends(a,"tional",6,k)) {k-=6;setto(4,"tion",a); break; }
+                break;
+            case 'c': if (ends(a,"enci",4,k)) { k-=4;parameter=1;setto(4,"ence",a); break; } else
+                if (ends(a,"anci",4,k)) { k-=4;parameter=1;setto(4,"ance",a); break; }
+                break;
+            case 'e': if (ends(a,"izer",4,k)) {{k-=4;parameter=1;setto(3,"ize",a); break; }}
+                break;
+            case 'l': if (ends(a,"bli",3,k)) {k-=3;parameter=1;setto(3,"ble",a); break; }
+                if (ends(a,"eli",3,k)) {k-=3;setto(1,"e",a); break; }
+                if (ends(a,"alli",4,k)) {k-=4;parameter=1;setto(2,"al",a); break; }
+                if (ends(a,"entli",5,k)) {k-=5;parameter=1;setto(3,"ent",a); break; }
+                if (ends(a,"ousli",5,k)) {k-=5;parameter=1;setto(3,"ous",a); break; }
+                break;
+            case 'o': if (ends(a,"ator",4,k)) { k-=4;parameter=1;setto(3,"ate",a); break; }
+                if (ends(a,"ization",7,k)) { k-=7;parameter=1;setto(3,"ize",a); break; }
+                if (ends(a,"ation",5,k)) {k-=5;parameter=1;setto(3,"ate",a); break; }
+                break;
+            case 's': if (ends(a,"alism",5,k)) { k-=5;parameter=1;setto(2,"al",a); break; }
+                if (ends(a,"iveness",7,k)) { k-=7;parameter=1;setto(3,"ive",a); break; }
+                if (ends(a,"fulness",7,k)) { k-=7;parameter=1;setto(3,"ful",a); break; }
+                if (ends(a,"ousness",7,k)) { k-=7;parameter=1;setto(3,"ous",a); break; }
+                break;
+            case 't': if (ends(a,"aliti",5,k)) { k-=5;parameter=1;setto(2,"al",a); break; }
+                if (ends(a,"iviti",5,k)) { k-=5;parameter=1;setto(3,"ive",a); break; }
+                if (ends(a,"biliti",6,k)) { k-=6;parameter=1;setto(3,"ble",a); break; }
+                break;
+            case 'g': if (ends(a,"logi",4,k)) { k-=4;parameter=1;setto(3,"log",a); break; }
 
         } }}
-        
+
 /* step3() deals with -ic-, -full, -ness etc. similar strategy to step2. */
 
 void step3(char a[],int j) {
@@ -286,17 +288,17 @@ void step3(char a[],int j) {
         switch (a[k])
         {
 
-        case 'e': if (ends(a,"icate",5,k)) { k-=5;parameter=1;setto(2,"ic",a); break; }
-                  if (ends(a,"ative",5,k)) { k-=5;parameter=1;setto(0," ",a); break; }
-                  if (ends(a,"alize",5,k)) { k-=5;parameter=1;setto(2,"al",a); break; }
-                  break;
-        case 'i': if (ends(a,"iciti",5,k)) { k-=5;parameter=1;setto(2,"ic",a); break; }
-                  break;
-        case 'l': if (ends(a,"ical",4,k)) { k-=4;parameter=1;setto(2,"ic",a); break; }
-                  if (ends(a,"ful",3,k)) { k-=3;parameter=1;setto(0," ",a); break; }
-                  break;
-        case 's': if (ends(a,"ness",4,k)) { k-=4;parameter=1;setto(0,"",a); break; }
-                  break;
+            case 'e': if (ends(a,"icate",5,k)) { k-=5;parameter=1;setto(2,"ic",a); break; }
+                if (ends(a,"ative",5,k)) { k-=5;parameter=1;setto(0," ",a); break; }
+                if (ends(a,"alize",5,k)) { k-=5;parameter=1;setto(2,"al",a); break; }
+                break;
+            case 'i': if (ends(a,"iciti",5,k)) { k-=5;parameter=1;setto(2,"ic",a); break; }
+                break;
+            case 'l': if (ends(a,"ical",4,k)) { k-=4;parameter=1;setto(2,"ic",a); break; }
+                if (ends(a,"ful",3,k)) { k-=3;parameter=1;setto(0," ",a); break; }
+                break;
+            case 's': if (ends(a,"ness",4,k)) { k-=4;parameter=1;setto(0,"",a); break; }
+                break;
         } }}
 
 
@@ -304,31 +306,31 @@ void step3(char a[],int j) {
 
 void step4(char a[],int j)
 { if ((m(a,j,k)>1))
-{ switch (a[k-1])
-{ case 'a': if (ends(a,"al",2,k)) {k-=2;parameter=1;setto(0," ",a);return;}
-       case 'c': if (ends(a,"ance",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
-                 if (ends(a,"ence",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
-       case 'e': if (ends(a,"er",2,k)) {k-=2;parameter=1;setto(0," ",a);return;}
-       case 'i': if (ends(a,"ic",2,k)){k-=2;parameter=1;setto(0," ",a);return;}
-       case 'l': if (ends(a,"able",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
-                 if (ends(a,"ible",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
-       case 'n': if (ends(a,"ant",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-                 if (ends(a,"ement",5,k)){k-=5;parameter=1;setto(0," ",a);return;}
-                 if (ends(a,"ment",4,k)) {k-=4;parameter=1;setto(0," ",a);return;}
-                 if (ends(a,"ent",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-       case 'o': if (ends(a,"ion",3,k) && (a[k-3] == 's' || a[k-3] == 't')){k-=3;parameter=1;setto(0," ",a);return;}
-                 if (ends(a,"ou",2,k)) {k-=2;parameter=1;setto(0," ",a);return;}
-       case 's': if (ends(a,"ism",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-       case 't':
-           if (ends(a,"ate",3,k)) {k-=3;parameter=1;setto(0," ",a);return;} //========================discuss
-           if (ends(a,"iti",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-       case 'u': if (ends(a,"ous",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-       case 'v': if (ends(a,"ive",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-       case 'z': if (ends(a,"ize",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
-       default: return;
-}
-if (m(a,j,k) > 1) j=k;
-}}
+    { switch (a[k-1])
+        { case 'a': if (ends(a,"al",2,k)) {k-=2;parameter=1;setto(0," ",a);return;}
+            case 'c': if (ends(a,"ance",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
+                if (ends(a,"ence",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
+            case 'e': if (ends(a,"er",2,k)) {k-=2;parameter=1;setto(0," ",a);return;}
+            case 'i': if (ends(a,"ic",2,k)){k-=2;parameter=1;setto(0," ",a);return;}
+            case 'l': if (ends(a,"able",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
+                if (ends(a,"ible",4,k)){k-=4;parameter=1;setto(0," ",a);return;}
+            case 'n': if (ends(a,"ant",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+                if (ends(a,"ement",5,k)){k-=5;parameter=1;setto(0," ",a);return;}
+                if (ends(a,"ment",4,k)) {k-=4;parameter=1;setto(0," ",a);return;}
+                if (ends(a,"ent",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+            case 'o': if (ends(a,"ion",3,k) && (a[k-3] == 's' || a[k-3] == 't')){k-=3;parameter=1;setto(0," ",a);return;}
+                if (ends(a,"ou",2,k)) {k-=2;parameter=1;setto(0," ",a);return;}
+            case 's': if (ends(a,"ism",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+            case 't':
+                if (ends(a,"ate",3,k)) {k-=3;parameter=1;setto(0," ",a);return;} //========================discuss
+                if (ends(a,"iti",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+            case 'u': if (ends(a,"ous",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+            case 'v': if (ends(a,"ive",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+            case 'z': if (ends(a,"ize",3,k)) {k-=3;parameter=1;setto(0," ",a);return;}
+            default: return;
+        }
+        if (m(a,j,k) > 1) j=k;
+    }}
 
 /* step5() removes a final -e if m() > 1, and changes -ll to -l if
 m() > 1. */
@@ -337,8 +339,9 @@ void step5(char a[],int j)
 {
     j = k;
     if (a[k] == 'e')
-    { int x = m(a,j,k);
-    if (x > 1 ){k--;} else
+    {
+        int x = m(a,j,k);
+        if (x > 1 ){k--;} else
         if ((x == 1) && !cvc(k-1,a,0)) k--;
     }
     if (m(a,j,k) > 1)
@@ -361,85 +364,20 @@ int stem(char a[], int i, int j)
     step3(a,j);
     step4(a,j);
     step5(a,j);
-
     return k;
 }
 
-int main () { /*main and stemfile function.----------------------------------------------*/
-    char str[50];
-    char str1[50];
-    int i=0;
-    char *a=new char[15];
-    int val;
-    int j;char c;
-    int x=0;
-    static char * s;
-    char fin_char;
-    string line;
-    int warning=0;
-    std::cout << "Enter the name of an existing text file to test. \nExample: abc.txt\n: ";
-    std::cin.get (str,256); // get c-string
-     cout<<"============================================================================="<<endl;
-    //std::cout << "Enter the name of an existing output text file: ";
-    //std::cin.get (str1,256);
-    /*if(argc !=3 )
-{
-cout << "Bad parameter"<<endl ;
-cout << "Example:\n\t" ;
-cout << argv[0]<< " "<< "<input file name> <output file name>" << endl ;
-return -1;
-}*/
-    
-    // argv[0] --> name of the executable
-    // argv[1] --> name of the input file
-    // argv[2] --> name of the output file
+vector<string> Preprocessing::porterStemming(vector<string> tokens){ /*main and stemfile function.----------------------------------------------*/
+    vector<string> word_stem;
 
-    //strcpy(str,argv[1]);
-    std::ifstream is("../data/collection.tsv"); // open input file
-    std::ofstream ofs;
-    ofs.open ("testfile_output.txt", std::ofstream::out);
-    //std::ifstream out (argv[2]) ; // open output file
-    if (is.fail()) {cout<<"\n ERROR: Enter a valid existing filename. Example: abc.txt\n";cout<<"\n";system("pause");}
-    else
-    {
-        while (is.good()) // loop while extraction from file is possible
-        { memset(a,'\0',sizeof(a));
-            while(is.getline(a,50,'\n'))
-            { memset(temp,'\0',sizeof(temp));
-                memcpy(temp,a,strlen(a));
-                memset(a,0,sizeof(a));
-                strcpy(a,temp);
-                cout<<"Word in the file:"<<" ";
-                puts(a);cout<<endl;
-                a[strlen(a)] = '\0' ;
-                for (int j=0; j<strlen(a); ++j) //||a[j]=='{'||a[j]=='['||a[j]=='}'||a[j]=']'||a[j]='|'||a[j]='\'||a[j]=='/'||a[j]=='.'
-                {
-                    if (a[j]=='*'||a[j]=='!'||a[j]=='@'||a[j]=='#'||a[j]=='$'||a[j]=='%'||a[j]=='^'||a[j]=='&'||a[j]=='('||a[j]==')'||a[j]=='{'||a[j]=='['||a[j]=='}'||a[j]=='.'||a[j]=='/'||a[j]=='>'||a[j]=='<'||a[j]==','||a[j]==':'||a[j]==';') if (warning==0){cout<<"\nWarning: Special character found.\nSpecial character remain unaltered.\n"; warning=1;}
-                    a[j]=tolower(a[j]);
-                }
-                cout<<"\nWord in the file after changing case:"<<" ";
-                cout <<a<<endl;
-                //system("pause");
-
-                int iCount = -1 ;
-                iCount = strlen(a) ;
-                //j = j-1;
-                --iCount ;
-                a[stem(a,0,iCount)+1] = 0; //Calling stem function and null terminating the string.
-                cout<<"\n";
-                cout<<"Stem Word:"<<"\n";
-                cout<<a << endl; // write in the ouput file
-                cout<<"\n";
-                cout<<"============================================================================="<<endl;
-                ofs<<a;
-                //ofs.write(a,iCount);
-                ofs<<endl;
-            }
-
-             is.close(); // close input file
-             ofs.close() ; // close output file
-        }
-        system("pause");
-        return 0;
+    for (int i=0;i<<tokens.size(); i++) {
+        char word[tokens[i].length() + 1];
+        strcpy(word, tokens[i].c_str());
+        int iCount = -1;
+        iCount = strlen(word);
+        --iCount;
+        word[stem(word, 0, iCount) + 1] = 0; //Calling stem function and null terminating the string.
+        word_stem.push_back(word);
     }
+    return word_stem;
 }

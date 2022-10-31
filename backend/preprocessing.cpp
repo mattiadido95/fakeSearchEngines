@@ -1,11 +1,12 @@
 #include "preprocessing.h"
- //#include "PorterStemming.cpp"
+#include "PorterStemming.cpp"
 #include <string>
 #include <iostream>
 #include <vector>
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include <map>
+
 
 using namespace std;
 
@@ -21,12 +22,11 @@ vector<string> Preprocessing::tokenization(string doc){
     for (; it != reg_end; ++it) {
         if (it->str() == "")
                 continue;
-        words.push_back(it->str()+"\0");
+        words.push_back(it->str());
     }
     
     //for(int i = 0; i < words.size(); i++)
     //        cout << words[i] << '\n';
-
     return words;
 
 }
@@ -38,32 +38,33 @@ map<string, int>Preprocessing::removeDuplicate(vector<string> vocabulary){
     }
     return m;
 }
-vector<string> Preprocessing::remuveWordstop(vector<string> words)
+vector<string> Preprocessing::removeWordstop(vector<string> words)
 {
-    ifstream filein("../data/stop_words_english.txt");
     int c;
+    bool check= false;
     vector<string> words_nostw;
-    string ciao = "able";
-    for (string wordstop; getline(filein, wordstop); ) 
-    {
-        
-        for(int i = 0; i< words.size(); i++){
-            cout<<wordstop[8]<<endl;
-            if (ciao.compare("able")== 0){
-                cout<<"sono dentro"<<endl;
-                words_nostw.push_back(words[i]);}
-            break;
+    for(int i = 0; i< words.size(); i++){
+        string ciao = words[44];
+        ifstream filein("../../data/stop_words_english.txt");
+        for (string wordstop; getline(filein, wordstop);) {
+            if (wordstop.compare(words[i]) == 0)
+                check = true;
         }
-        break;
+        filein.close();
+        if (check == false)
+            words_nostw.push_back(words[i]);
+        check=false;
     }
     for(int i = 0; i<words_nostw.size(); i++)
-        cout<<words_nostw[i]<<endl;    
+        cout<<words.size()<<" "<<words_nostw.size()<<" "<< words_nostw[i]<<endl;
+
     return words_nostw;
 
 }
 
 Preprocessing::Preprocessing(string path){
     vector<string> words;
+    vector<string> words2;
     vector<string> support;
     vector<string> wordsdocs; 
     map<string, int> cleanVocabulary; 
@@ -73,11 +74,14 @@ Preprocessing::Preprocessing(string path){
     for (string doc; getline(filein, doc); ) 
     {
         words= tokenization(doc);
-        words = remuveWordstop(words);
+        
         string id = words[0];
         words.erase(words.begin());
-
-       
+        words = removeWordstop(words);
+        words2 = Preprocessing::porterStemming(words);
+        for(int i = 0; i< words.size(); i++)
+            cout<<words[i]<<" "<<words2[i]<<endl;
+        break;
         support.clear();
         support.reserve( words.size() + wordsdocs.size() );
         support.insert( support.end(), wordsdocs.begin(), wordsdocs.end());
