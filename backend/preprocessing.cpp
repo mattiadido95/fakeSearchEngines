@@ -1,5 +1,5 @@
 #include "preprocessing.h"
-#include "PorterStemming.cpp"
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -78,7 +78,7 @@ Preprocessing::Preprocessing(string path){
         string id = words[0];
         words.erase(words.begin());
         words = removeWordstop(words);
-        words2 = Preprocessing::porterStemming(words);
+        words2 = porterStemming(words);
         for(int i = 0; i< words.size(); i++)
             cout<<words[i]<<" "<<words2[i]<<endl;
         break;

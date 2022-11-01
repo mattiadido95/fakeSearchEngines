@@ -63,13 +63,6 @@ build CMakeFiles/backend.dir/preprocessing.cpp.obj: CXX_COMPILER__backend_Debug 
   OBJECT_DIR = CMakeFiles\backend.dir
   OBJECT_FILE_DIR = CMakeFiles\backend.dir
 
-build CMakeFiles/backend.dir/PorterStemming.cpp.obj: CXX_COMPILER__backend_Debug C$:/GitHub/Computer$ Vision/Project/fakeSearchEngines/backend/PorterStemming.cpp || cmake_object_order_depends_target_backend
-  DEP_FILE = CMakeFiles\backend.dir\PorterStemming.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  INCLUDES = -I"C:/GitHub/Computer Vision/Project/fakeSearchEngines/backend/."
-  OBJECT_DIR = CMakeFiles\backend.dir
-  OBJECT_FILE_DIR = CMakeFiles\backend.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target backend
@@ -78,7 +71,7 @@ build CMakeFiles/backend.dir/PorterStemming.cpp.obj: CXX_COMPILER__backend_Debug
 #############################################
 # Link the executable backend.exe
 
-build backend.exe: CXX_EXECUTABLE_LINKER__backend_Debug CMakeFiles/backend.dir/main.cpp.obj CMakeFiles/backend.dir/preprocessing.cpp.obj CMakeFiles/backend.dir/PorterStemming.cpp.obj
+build backend.exe: CXX_EXECUTABLE_LINKER__backend_Debug CMakeFiles/backend.dir/main.cpp.obj CMakeFiles/backend.dir/preprocessing.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\backend.dir

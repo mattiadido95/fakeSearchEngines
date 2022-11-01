@@ -367,7 +367,7 @@ int stem(char a[], int i, int j)
     return k;
 }
 
-vector<string> Preprocessing::porterStemming(vector<string> tokens){ /*main and stemfile function.----------------------------------------------*/
+vector<string> porterStemming(vector<string> tokens){ /*main and stemfile function.----------------------------------------------*/
     vector<string> word_stem;
 
     for (int i=0;i<<tokens.size(); i++) {
