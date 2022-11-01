@@ -1,5 +1,6 @@
 #include <iostream> // std::cin, std::cout
 #include <fstream> // std::ifstream
+#include "preprocessing.h"
 
 
 #include<string.h>
@@ -367,10 +368,10 @@ int stem(char a[], int i, int j)
     return k;
 }
 
-vector<string> porterStemming(vector<string> tokens){ /*main and stemfile function.----------------------------------------------*/
+vector<string> Preprocessing::porterStemming(vector<string> tokens){ /*main and stemfile function.----------------------------------------------*/
     vector<string> word_stem;
-
-    for (int i=0;i<<tokens.size(); i++) {
+    cout<<tokens.size()<<endl;
+    for (int i=0; i<tokens.size(); i++) {
         char word[tokens[i].length() + 1];
         strcpy(word, tokens[i].c_str());
         int iCount = -1;

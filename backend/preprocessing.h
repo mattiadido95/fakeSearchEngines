@@ -23,6 +23,7 @@ class Preprocessing{
 
     // remove duplicate
     map<string, int> removeDuplicate(vector<string>);
+    
     public:
     Preprocessing(string);
 };

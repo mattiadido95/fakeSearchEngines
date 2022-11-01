@@ -55,8 +55,7 @@ vector<string> Preprocessing::removeWordstop(vector<string> words)
             words_nostw.push_back(words[i]);
         check=false;
     }
-    for(int i = 0; i<words_nostw.size(); i++)
-        cout<<words.size()<<" "<<words_nostw.size()<<" "<< words_nostw[i]<<endl;
+
 
     return words_nostw;
 
@@ -80,7 +79,7 @@ Preprocessing::Preprocessing(string path){
         words = removeWordstop(words);
         words2 = porterStemming(words);
         for(int i = 0; i< words.size(); i++)
-            cout<<words[i]<<" "<<words2[i]<<endl;
+            cout<<"token iniziale-->"<<words[i]<<"   token con stemming->"<<words2[i]<<endl;
         break;
         support.clear();
         support.reserve( words.size() + wordsdocs.size() );
