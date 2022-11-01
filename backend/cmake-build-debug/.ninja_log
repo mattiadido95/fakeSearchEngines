@@ -27,3 +27,7 @@
 2328	3342	6890223206085772	backend.exe	1c7eabfcbf46b05e
 3	2218	6890223468273105	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
 2219	3317	6890223479275081	backend.exe	1c7eabfcbf46b05e
+9	624	6890227747461314	CMakeFiles/backend.dir/PorterStemming.cpp.obj	1557f5abaaf9c8f1
+4	969	6890227750923797	CMakeFiles/backend.dir/main.cpp.obj	c49e0aaa094242a9
+6	3307	6890227774620692	CMakeFiles/backend.dir/preprocessing.cpp.obj	72262466e92aba4
+3308	4305	6890227784644161	backend.exe	1c7eabfcbf46b05e

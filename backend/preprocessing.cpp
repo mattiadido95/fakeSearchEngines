@@ -40,17 +40,22 @@ map<string, int>Preprocessing::removeDuplicate(vector<string> vocabulary){
 }
 vector<string> Preprocessing::removeWordstop(vector<string> words)
 {
-    int c;
+    vector<string> wordstops;
     bool check= false;
     vector<string> words_nostw;
+
+    ifstream filein("../../data/stop_words_english.txt");
+    for (string wordstop; getline(filein, wordstop);) {
+        wordstops.push_back(wordstop);
+    }
+    filein.close();
+
     for(int i = 0; i< words.size(); i++){
         string ciao = words[44];
-        ifstream filein("../../data/stop_words_english.txt");
-        for (string wordstop; getline(filein, wordstop);) {
-            if (wordstop.compare(words[i]) == 0)
+        for(int j = 0; j< wordstops.size(); j++){
+            if (wordstops[j].compare(words[i]) == 0)
                 check = true;
         }
-        filein.close();
         if (check == false)
             words_nostw.push_back(words[i]);
         check=false;
