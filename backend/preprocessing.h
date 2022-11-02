@@ -8,13 +8,14 @@ using namespace std;
 
 class Preprocessing{
     private:
+    map<string, vector<vector<string>>> index;
     vector<string> tokenization(string);
     // stopwords();
     vector<string> removeWordstop(vector<string>);
     // stemming();
     vector<string> porterStemming(vector<string>);
     // remove duplicate
-    map<string, int> removeDuplicate(vector<string>);
+    void removeDuplicate( string,vector<string>);
 
     public:
     Preprocessing(string);
