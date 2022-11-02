@@ -2,11 +2,13 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include <map>
-
+#include "utility/utility.h"
+#include "PorterStemming.cpp"
 
 using namespace std;
 
@@ -24,39 +26,52 @@ vector<string> Preprocessing::tokenization(string doc){
                 continue;
         words.push_back(it->str());
     }
-    
-    //for(int i = 0; i < words.size(); i++)
-    //        cout << words[i] << '\n';
+
+
     return words;
 
 }
-
-vector<string> Preprocessing::removeWordstop(vector<string> words)
-{
-    vector<string> wordstops;
-    bool check= false;
-    vector<string> words_nostw;
-
-    ifstream filein("../../data/stop_words_english.txt");
-    for (string wordstop; getline(filein, wordstop);) {
-        wordstops.push_back(wordstop);
+vector<string> Preprocessing::getStopwords() {
+    vector<string> stopwords;
+    ifstream file("../backend/stopwords.txt");
+    string line;
+    while (std::getline(file, line)) {
+        stopwords.push_back(line);
     }
-    filein.close();
-
-    for(int i = 0; i< words.size(); i++){
-        for(int j = 0; j< wordstops.size(); j++){
-            if (wordstops[j].compare(words[i]) == 0)
-                check = true;
-        }
-        if (check == false)
-            words_nostw.push_back(words[i]);
-        check=false;
-    }
-
-
-    return words_nostw;
-
+    return stopwords;
 }
+
+vector<string> Preprocessing::removeWordstop(vector<string> words) {
+    //  get stopwords list
+    cout << "- start import stopword list ..." << endl;
+    vector<string> stopwords = getStopwords();
+    cout << "   -> number of stopword imported " << stopwords.size() << endl;
+
+    //      create for loop to remove stopwords from tokens list
+    cout << "- start find stopword into tokens ..." << endl;
+    vector<int> index_list; // list of index to remove from tokens list that match with stopwords
+    std::sort(words.begin(), words.end()); // sort word array to implement binary search
+    for (vector<string>::iterator s = stopwords.begin(); s != stopwords.end(); s++) {
+        cout << "   -> find stopword: " << *s << ": ";
+        int res = binary_search(words, *s, words.size());
+        if (res != -1) {
+//              cout << "FOUND" << endl;
+            index_list.push_back(res);
+        }
+//            else {
+//              cout << "NOT FOUND" << endl;
+//            }
+    }
+
+//  delete stopwords from tokens vector
+    for (int index: index_list) {
+        words.erase(words.begin() + index); // TODO -> controllare complessita erase() - probabilmente o(n)
+    }
+
+    return words;
+}
+
+
 void Preprocessing::removeDuplicate(string id, vector<string> words){
     vector<string> id_score;vector<vector<string>> posting_list;
     string score_sting;

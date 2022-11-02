@@ -10,6 +10,9 @@ class Preprocessing{
     private:
     map<string, vector<vector<string>>> index;
     vector<string> tokenization(string);
+
+    vector<string> getStopwords();
+
     // stopwords();
     vector<string> removeWordstop(vector<string>);
     // stemming();

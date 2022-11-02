@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Container,
   Avatar,
@@ -22,14 +22,22 @@ import {
 import { DashboardLayout } from "../components/dashboard-layout";
 import { customers } from "../__mocks__/customers";
 import { Search as SearchIcon } from "../icons/search";
-import documents from "./data.json";
+import documents from "../../../backend/server/data.json";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import axios from "axios";
 
 const Page = () => {
   const [documentsList, setDocumentsList] = useState([]);
 
+  useEffect(() => {}, []);
+
+  const endpoint = "http://localhost:9080/list";
+
   const loadDocuments = () => {
-    setDocumentsList(documents.data);
+    axios.post(endpoint).then((res) => {
+      console.log(res.data);
+      setDocumentsList(res.data.data);
+    });
   };
 
   return (
