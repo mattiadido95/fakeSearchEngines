@@ -27,37 +27,21 @@ int binary_search(vector<string> stopwords, string token, int size) {
     while (l <= r) {
         int m = l + (r - l) / 2;
         int res = -1000; // some random value assigned because if res is already 0 then
-        // it will always return 0
+//        it will always return 0
         if (token.compare(stopwords[m]) == 0) {
             res = 0;
         }
-        // Check if x is present at mid
+//        Check if x is present at mid
         if (res == 0) {
             return m;
         }
-        // If x greater, ignore left half
+//        If x greater, ignore left half
         if (token.compare(stopwords[m]) > 0) {
             l = m + 1;
         }
-            // If x is smaller, ignore right half
+//        If x is smaller, ignore right half
         else { r = m - 1; }
     }
     return -1;
 }
 
-vector<int> my_search(vector<string> stopwords, vector<string> tokens) {
-    vector<int> index_list;
-
-    for (int s = 0; s < stopwords.size(); s++) {
-        for (int t = 0; t < tokens.size(); t++) {
-            if (stopwords[s].compare(tokens[t]) == 0) {
-//                cout << "- FOUND -> " << stopwords[s] << " - " << tokens[t] << endl;
-                index_list.push_back(t);
-            }
-//            else {
-//                cout << "- NOT FOUND -> " << stopwords[s] << " - " << tokens[t] << endl;
-//            }
-        }
-    }
-    return index_list;
-}

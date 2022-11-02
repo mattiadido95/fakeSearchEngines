@@ -103,6 +103,4 @@ Preprocessing::Preprocessing(string path) {
         }
     }
 
-
-//  vector<int> tokens_to_remove = my_search(stopwords, words);
 }
