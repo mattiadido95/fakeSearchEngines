@@ -18,7 +18,7 @@ class Preprocessing{
     // stemming();
     vector<string> porterStemming(vector<string>);
     // remove duplicate
-    void removeDuplicate( string,vector<string>);
+    void build_index( string,vector<string>);
 
     public:
     Preprocessing(string);

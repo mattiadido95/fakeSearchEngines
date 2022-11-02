@@ -7,8 +7,7 @@
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include <map>
-#include "utility/utility.h"
-#include "PorterStemming.cpp"
+#include "utility/utility.cpp"
 
 using namespace std;
 
@@ -33,9 +32,9 @@ vector<string> Preprocessing::tokenization(string doc){
 }
 vector<string> Preprocessing::getStopwords() {
     vector<string> stopwords;
-    ifstream file("../backend/stopwords.txt");
+    ifstream file("../../data/stop_words_english.txt");
     string line;
-    while (std::getline(file, line)) {
+    while (getline(file, line)) {
         stopwords.push_back(line);
     }
     return stopwords;
@@ -43,16 +42,16 @@ vector<string> Preprocessing::getStopwords() {
 
 vector<string> Preprocessing::removeWordstop(vector<string> words) {
     //  get stopwords list
-    cout << "- start import stopword list ..." << endl;
+    //cout << "- start import stopword list ..." << endl;
     vector<string> stopwords = getStopwords();
-    cout << "   -> number of stopword imported " << stopwords.size() << endl;
+    //cout << "   -> number of stopword imported " << stopwords.size() << endl;
 
     //      create for loop to remove stopwords from tokens list
-    cout << "- start find stopword into tokens ..." << endl;
+    //cout << "- start find stopword into tokens ..." << endl;
     vector<int> index_list; // list of index to remove from tokens list that match with stopwords
     std::sort(words.begin(), words.end()); // sort word array to implement binary search
     for (vector<string>::iterator s = stopwords.begin(); s != stopwords.end(); s++) {
-        cout << "   -> find stopword: " << *s << ": ";
+        // cout << "   -> find stopword: " << *s << ": ";
         int res = binary_search(words, *s, words.size());
         if (res != -1) {
 //              cout << "FOUND" << endl;
@@ -72,7 +71,7 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
 }
 
 
-void Preprocessing::removeDuplicate(string id, vector<string> words){
+void Preprocessing::build_index(string id, vector<string> words){
     vector<string> id_score;vector<vector<string>> posting_list;
     string score_sting;
     bool check;
@@ -156,12 +155,11 @@ Preprocessing::Preprocessing(string path){
         //stemming
         words = porterStemming(words);
         //index
-        removeDuplicate(id, words);
+        build_index(id, words);
 
 
 
         c++;
-        cout<<c<<endl;
         if (c == 200 ) {
             for (map<string, vector<vector<string>>>::iterator ii = this->index.begin(); ii != this->index.end(); ++ii) {
                 cout << (*ii).first << ": ";
