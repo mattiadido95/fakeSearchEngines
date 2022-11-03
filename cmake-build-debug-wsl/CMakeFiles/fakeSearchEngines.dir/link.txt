@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o -o fakeSearchEngines 
