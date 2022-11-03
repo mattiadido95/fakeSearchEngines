@@ -69,24 +69,10 @@ include CMakeFiles/fakeSearchEngines.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/fakeSearchEngines.dir/flags.make
 
-CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o: CMakeFiles/fakeSearchEngines.dir/flags.make
-CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o: ../backend/server/rest_server.cpp
-CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o: CMakeFiles/fakeSearchEngines.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o -MF CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o.d -o CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o -c /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/server/rest_server.cpp
-
-CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/server/rest_server.cpp > CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.i
-
-CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/server/rest_server.cpp -o CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.s
-
 CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o: CMakeFiles/fakeSearchEngines.dir/flags.make
 CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o: ../backend/utility/FileManager.cpp
 CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o: CMakeFiles/fakeSearchEngines.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o -MF CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o.d -o CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o -c /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/utility/FileManager.cpp
 
 CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.i: cmake_force
@@ -100,7 +86,7 @@ CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.s: cmake_force
 CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o: CMakeFiles/fakeSearchEngines.dir/flags.make
 CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o: ../backend/utility/utility.cpp
 CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o: CMakeFiles/fakeSearchEngines.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o -MF CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o.d -o CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o -c /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/utility/utility.cpp
 
 CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.i: cmake_force
@@ -114,7 +100,7 @@ CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.s: cmake_force
 CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: CMakeFiles/fakeSearchEngines.dir/flags.make
 CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: ../backend/main.cpp
 CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: CMakeFiles/fakeSearchEngines.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o -MF CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o.d -o CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o -c /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/main.cpp
 
 CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.i: cmake_force
@@ -128,7 +114,7 @@ CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.s: cmake_force
 CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o: CMakeFiles/fakeSearchEngines.dir/flags.make
 CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o: ../backend/PorterStemming.cpp
 CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o: CMakeFiles/fakeSearchEngines.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o -MF CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o.d -o CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o -c /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/PorterStemming.cpp
 
 CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.s: cmake_force
 CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o: CMakeFiles/fakeSearchEngines.dir/flags.make
 CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o: ../backend/preprocessing.cpp
 CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o: CMakeFiles/fakeSearchEngines.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o -MF CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o.d -o CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o -c /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/preprocessing.cpp
 
 CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.i: cmake_force
@@ -155,7 +141,6 @@ CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.s: cmake_force
 
 # Object files for target fakeSearchEngines
 fakeSearchEngines_OBJECTS = \
-"CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o" \
 "CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o" \
 "CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o" \
 "CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o" \
@@ -165,7 +150,6 @@ fakeSearchEngines_OBJECTS = \
 # External object files for target fakeSearchEngines
 fakeSearchEngines_EXTERNAL_OBJECTS =
 
-fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o
 fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o
 fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o
 fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o
@@ -173,7 +157,7 @@ fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/backend/PorterStemming.cpp.o
 fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o
 fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/build.make
 fakeSearchEngines: CMakeFiles/fakeSearchEngines.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable fakeSearchEngines"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable fakeSearchEngines"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fakeSearchEngines.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

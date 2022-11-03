@@ -98,9 +98,6 @@
 		<Unit filename="/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/preprocessing.h">
 			<Option target="fakeSearchEngines"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/server/rest_server.cpp">
-			<Option target="fakeSearchEngines"/>
-		</Unit>
 		<Unit filename="/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/utility/FileManager.cpp">
 			<Option target="fakeSearchEngines"/>
 		</Unit>
