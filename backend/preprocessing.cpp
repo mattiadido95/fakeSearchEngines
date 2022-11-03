@@ -95,20 +95,14 @@ void Preprocessing::build_index(string id, vector<string> words){
                 if (posting_list[j][0].compare(id) == 0) {
                     //if I enter in the "if" I report it
                     check = true;
-                    //take the frequency
+                    //take the frequency and increasing the value of 1
                     int frequency = posting_list[j].find(id)->second++;
-
-                    //reconvert the score in string;
-                    score_sting = to_string(string_int);
-                    //remove from posting_list old value
-                    posting_list.erase(posting_list.begin()+j);
+                    //remove from posting_list old posting
+                    posting_list[j].erase(id);
                     //delete all row of map
                     this->index.erase(it);
                     //update new value in map
-                    id_score.push_back(id);
-                    id_score.push_back(score_sting);
-                    posting_list.push_back(id_score);
-                    this->index.insert(pair<string, vector<vector<string>>>(words[i], posting_list));
+                    this->index.insert(pair<string, vector<map<string,int>>>(words[i], posting_list));
                     posting_list.clear();
                     id_score.clear();
                     break;
@@ -122,7 +116,7 @@ void Preprocessing::build_index(string id, vector<string> words){
             id_score.push_back(id);
             id_score.push_back("1");
             posting_list.push_back(id_score);
-            this->index.insert(pair<string, vector<vector<string>>>(words[i], posting_list));
+            this->index.insert(pair<string, vector<map<string,int>>>(words[i], posting_list));
             id_score.clear();
             posting_list.clear();
         }
