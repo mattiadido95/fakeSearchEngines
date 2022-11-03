@@ -11,8 +11,9 @@ CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
- /usr/include/c++/12/ostream /usr/include/c++/12/ios \
- /usr/include/c++/12/iosfwd /usr/include/c++/12/bits/stringfwd.h \
+ /usr/include/c++/12/pstl/pstl_config.h /usr/include/c++/12/ostream \
+ /usr/include/c++/12/ios /usr/include/c++/12/iosfwd \
+ /usr/include/c++/12/bits/stringfwd.h \
  /usr/include/c++/12/bits/memoryfwd.h /usr/include/c++/12/bits/postypes.h \
  /usr/include/c++/12/cwchar /usr/include/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -106,7 +107,9 @@ CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: \
  /usr/include/c++/12/bits/basic_string.h \
  /usr/include/c++/12/ext/alloc_traits.h \
  /usr/include/c++/12/bits/alloc_traits.h \
- /usr/include/c++/12/bits/stl_construct.h \
+ /usr/include/c++/12/bits/stl_construct.h /usr/include/c++/12/string_view \
+ /usr/include/c++/12/bits/functional_hash.h \
+ /usr/include/c++/12/bits/string_view.tcc \
  /usr/include/c++/12/ext/string_conversions.h /usr/include/c++/12/cstdlib \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
@@ -129,7 +132,6 @@ CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/12/bits/charconv.h \
- /usr/include/c++/12/bits/functional_hash.h \
  /usr/include/c++/12/bits/basic_string.tcc \
  /usr/include/c++/12/bits/locale_classes.tcc \
  /usr/include/c++/12/system_error \
@@ -176,7 +178,9 @@ CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: \
  /usr/include/c++/12/bits/stl_heap.h \
  /usr/include/c++/12/bits/stl_tempbuf.h \
  /usr/include/c++/12/bits/uniform_int_dist.h \
- /usr/include/c++/12/bits/stl_tree.h /usr/include/c++/12/bits/stl_map.h \
+ /usr/include/c++/12/bits/stl_tree.h \
+ /usr/include/c++/12/bits/node_handle.h \
+ /usr/include/c++/12/bits/stl_map.h \
  /usr/include/c++/12/bits/regex_constants.h \
  /usr/include/c++/12/bits/regex_error.h \
  /usr/include/c++/12/bits/regex_automaton.h \
@@ -189,6 +193,8 @@ CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o: \
  /usr/include/c++/12/bits/regex_executor.h \
  /usr/include/c++/12/bits/regex_executor.tcc \
  /usr/include/c++/12/algorithm \
+ /usr/include/c++/12/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/12/pstl/execution_defs.h \
  /mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/preprocessing.h \
  /usr/include/c++/12/map /usr/include/c++/12/bits/stl_multimap.h \
  /usr/include/c++/12/bits/erase_if.h \

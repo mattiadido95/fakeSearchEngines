@@ -201,6 +201,30 @@ backend/preprocessing.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fakeSearchEngines.dir/build.make CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.s
 .PHONY : backend/preprocessing.cpp.s
 
+backend/server/rest_server.o: backend/server/rest_server.cpp.o
+.PHONY : backend/server/rest_server.o
+
+# target to build an object file
+backend/server/rest_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fakeSearchEngines.dir/build.make CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o
+.PHONY : backend/server/rest_server.cpp.o
+
+backend/server/rest_server.i: backend/server/rest_server.cpp.i
+.PHONY : backend/server/rest_server.i
+
+# target to preprocess a source file
+backend/server/rest_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fakeSearchEngines.dir/build.make CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.i
+.PHONY : backend/server/rest_server.cpp.i
+
+backend/server/rest_server.s: backend/server/rest_server.cpp.s
+.PHONY : backend/server/rest_server.s
+
+# target to generate assembly for a file
+backend/server/rest_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fakeSearchEngines.dir/build.make CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.s
+.PHONY : backend/server/rest_server.cpp.s
+
 backend/utility/FileManager.o: backend/utility/FileManager.cpp.o
 .PHONY : backend/utility/FileManager.o
 
@@ -267,6 +291,9 @@ help:
 	@echo "... backend/preprocessing.o"
 	@echo "... backend/preprocessing.i"
 	@echo "... backend/preprocessing.s"
+	@echo "... backend/server/rest_server.o"
+	@echo "... backend/server/rest_server.i"
+	@echo "... backend/server/rest_server.s"
 	@echo "... backend/utility/FileManager.o"
 	@echo "... backend/utility/FileManager.i"
 	@echo "... backend/utility/FileManager.s"

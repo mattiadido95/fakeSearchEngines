@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/fakeSearchEngines.dir/backend/main.cpp.o.d"
   "CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o"
   "CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.o.d"
+  "CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o"
+  "CMakeFiles/fakeSearchEngines.dir/backend/server/rest_server.cpp.o.d"
   "CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o"
   "CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.o.d"
   "CMakeFiles/fakeSearchEngines.dir/backend/utility/utility.cpp.o"

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend -I/mnt/c/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend/utility
 
-CXX_FLAGS = -g -std=gnu++14
+CXX_FLAGS = -g
 
