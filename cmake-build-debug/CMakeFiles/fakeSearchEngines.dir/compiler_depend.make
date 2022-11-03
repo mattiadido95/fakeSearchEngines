@@ -423,8 +423,7 @@ CMakeFiles/fakeSearchEngines.dir/backend/preprocessing.cpp.obj: ../backend/prepr
   C:/Program\ Files/JetBrains/CLion\ 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex.tcc \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_executor.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_executor.tcc \
-  ../backend/utility/utility.h \
-  ../backend/PorterStemming.cpp
+  ../backend/utility/utility.h
 
 CMakeFiles/fakeSearchEngines.dir/backend/utility/FileManager.cpp.obj: ../backend/utility/FileManager.cpp \
   ../backend/utility/FileManager.h \
@@ -1146,7 +1145,5 @@ C:/Program\ Files/JetBrains/CLion\ 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32
 ../backend/utility/FileManager.h:
 
 ../backend/preprocessing.cpp:
-
-../backend/PorterStemming.cpp:
 
 ../backend/utility/FileManager.cpp:

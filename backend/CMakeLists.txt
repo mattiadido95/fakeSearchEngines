@@ -8,5 +8,4 @@ include_directories(.)
 add_executable(backend
         main.cpp
         preprocessing.cpp
-        preprocessing.h
         PorterStemming.cpp)

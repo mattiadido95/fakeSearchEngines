@@ -7,7 +7,7 @@
 #include <algorithm> //serve per lower o upper
 #include <map>
 #include "utility/utility.h"
-#include "PorterStemming.cpp"
+
 
 using namespace std;
 
@@ -114,16 +114,17 @@ Preprocessing::Preprocessing(string path) {
         }
 
 //  delete stopwords from tokens vector
+        cout << "- start remove stopwords ..." << endl;
         for (int index: index_list) {
             words.erase(words.begin() + index); // TODO -> controllare complessita erase() - probabilmente o(n)
         }
 
         cout << "   -> start stemming" << endl;
-        words2 = porterStemming(words); // stemming phase
-        for (int i = 0; i < words.size(); i++)
-            cout << "       token iniziale -> " << words[i] << "   token con stemming -> " << words2[i] << endl;
+//        words2 = porterStemming(words); // stemming phase
+//        for (int i = 0; i < words.size(); i++)
+//            cout << "       token iniziale -> " << words[i] << "   token con stemming -> " << words2[i] << endl;
 
-        //break; // TODO -> chiedere a salvo perche breakka qui
+        break; // TODO -> chiedere a salvo perche breakka qui
 
         support.clear();
         support.reserve(words.size() + wordsdocs.size());

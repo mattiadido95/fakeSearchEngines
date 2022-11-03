@@ -14,10 +14,10 @@ int main() {
     // start preprocessing
     Preprocessing p("../../data/collection.tsv");
 
-    FileManager fm("../data/collection.tsv");
-    string result = fm.readLine();
-    cout << endl
-         << "print first document ->" << endl
-         << result << endl;
+//    FileManager fm("../data/collection.tsv");
+//    string result = fm.readLine();
+//    cout << endl
+//         << "print first document ->" << endl
+//         << result << endl;
     return 0;
 }
