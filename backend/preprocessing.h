@@ -1,26 +1,25 @@
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <map>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<map>
 
 using namespace std;
 
-class Preprocessing {
-private:
+class Preprocessing{
+    private:
+    map<string, vector<vector<string>>> index;
     vector<string> tokenization(string);
 
     vector<string> getStopwords();
 
     // stopwords();
     vector<string> removeWordstop(vector<string>);
-
     // stemming();
     vector<string> porterStemming(vector<string>);
-
     // remove duplicate
-    map<string, int> removeDuplicate(vector<string>);
+    void build_index( string,vector<string>);
 
-public:
+    public:
     Preprocessing(string);
 };
