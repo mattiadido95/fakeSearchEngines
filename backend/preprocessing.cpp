@@ -15,8 +15,15 @@ vector<string> Preprocessing::tokenization(string doc){
     vector<string> words;
       
     transform(doc.begin(), doc.end(), doc.begin(), ::tolower);  
-    
-    regex re("\\s+|\\!|\"|\\#|\\$|\\%|\\&|\\'|\\(|\\)|\\*|\\+|\\,|\\-|\\.|\\/|\\:|\\;|\\<|\\=|\\>|\\|\\?|\\@|\\[|\\]|\\^|\\_|\\`|\\{|\\||\\}|\\~");
+    /*
+     * removed |\\_ because on it causes
+     * libc++abi: terminating with uncaught exception of type
+     * std::__1::regex_error: The expression contained an
+     * invalid escaped character, or a trailing escape.
+     */
+    regex re("\\s+|\\!|\"|\\#|\\$|\\%|\\&|\\'|\\(|\\)|\\*|\\+|"
+             "\\,|\\-|\\.|\\/|\\:|\\;|\\<|\\=|\\>|\\|\\?|\\@|\\[|"
+             "\\]|\\^|\\`|\\{|\\||\\}|\\~");
     sregex_token_iterator it(doc.begin(), doc.end(), re, -1);
     sregex_token_iterator reg_end;
     
@@ -72,61 +79,40 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
 
 
 void Preprocessing::build_index(string id, vector<string> words){
-    vector<string> id_score;
-    vector<map<string,int>> posting_list;
+    map<string,int> posting_list;
     string score_sting;
-    bool check;
     int frequency;
     for(int i = 0; i< words.size(); i++)
     {
-        check = false;
         if (this->index.count(words[i])>0) //check if a single word exists in vocabulary
         {
             //extract the postlisting of the word i-th
             auto it = this->index.find(words[i]);
             posting_list = it->second;
 
-
-
-            for (int j = 0; j < posting_list.size(); j++) {
-                //check if the id_doc is already present in the postinglist
-                if (posting_list[j].count(id)>0)
-                //from posting list of the word j-th I take all (docid, frequency)
-                if (posting_list[j][0].compare(id) == 0) {
-                    //if I enter in the "if" I report it
-                    check = true;
-                    //take the frequency and increasing the value of 1
-                    int frequency = posting_list[j].find(id)->second++;
-                    //remove from posting_list old posting
-                    posting_list[j].erase(id);
-                    //delete all row of map
-                    this->index.erase(it);
-                    //update new value in map
-                    this->index.insert(pair<string, vector<map<string,int>>>(words[i], posting_list));
-                    posting_list.clear();
-                    id_score.clear();
-                    break;
-                }
+            //from posting list of the word j-th I take all (docid, frequency)
+            if (posting_list.count(id)>0) {
+                //if I enter in the "if" I report it
+                //take the frequency and increasing the value of 1
+                frequency = posting_list.find(id)->second++;
+                //remove from posting_list old posting
+                posting_list.erase(id);
+                //delete all row of map
+                this->index.erase(it);
+                //update new value in map
+                posting_list.insert(pair<string,int>(id, frequency));
+                this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
+                posting_list.clear();
+                break;
             }
+        }else{
+            //it means that the word[i] exists but the document has not yet been added to the postilisting of it
+            posting_list.insert(pair<string,int>(id, 1));
 
-        } else{
-            //if I enter in the "else" I report it
-            check = true;
-            //update the vocabulary with new word and add new posting(id,score)
-            id_score.push_back(id);
-            id_score.push_back("1");
-            posting_list.push_back(id_score);
-            this->index.insert(pair<string, vector<map<string,int>>>(words[i], posting_list));
-            id_score.clear();
+            this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
             posting_list.clear();
         }
-        if (check == false) {
-            //it means that the word[i] exists but the document has not yet been added to the postilisting of it
-            id_score.push_back(id);
-            id_score.push_back("1");
-            this->index[words[i]].push_back(id_score);
-            id_score.clear();
-        }
+
     }
     return;
 }
@@ -156,12 +142,12 @@ Preprocessing::Preprocessing(string path){
 
         c++;
         if (c == 200 ) {
-            for (map<string, vector<map<string,int>>>::iterator ii = this->index.begin(); ii != this->index.end(); ++ii) {
-                cout << (*ii).first << ": ";
-                vector<map<string,int>> inVect = (*ii).second;
-                for (int j = 0; j < inVect.size(); j++) {
+            for (auto ii = this->index.begin(); ii != this->index.end(); ++ii) {
+                cout << ii->first << ": ";
+                map<string,int> inVect = ii->second;
+                for (auto tt = inVect.begin(); tt != inVect.end(); ++tt){
 
-                    cout << "(" << inVect[j][0] << "," << inVect[j][1] << "),";
+                    cout << "(" << tt->first << "," << tt->second << "),";
                 }
                 cout << endl;
             }
