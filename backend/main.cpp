@@ -10,14 +10,8 @@
 
 using namespace std;
 
-int main(){
-    cout << "Ciao" << endl;
-    FileManager fm("../stop.txt");
-    vector<string> res = fm.readFile();
-    string result = fm.readLine();
-    cout << result << endl;
-    result = fm.readLine();
-    cout << result << endl;
-    //preprocessing
+int main() {
+    // start preprocessing
+    Preprocessing p("../../data/collection.tsv");
     return 0;
 }
