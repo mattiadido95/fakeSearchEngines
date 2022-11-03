@@ -1,4 +1,4 @@
-//g++ -o main.exe main.cpp
+//g++ -o main.out -I ./utility *.cpp utility/*.cpp
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +13,5 @@ using namespace std;
 int main() {
     // start preprocessing
     Preprocessing p("../../data/collection.tsv");
-
-
     return 0;
 }

@@ -112,7 +112,6 @@ void Preprocessing::build_index(string id, vector<string> words){
             this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
             posting_list.clear();
         }
-
     }
     return;
 }
