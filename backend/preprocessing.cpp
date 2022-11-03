@@ -72,10 +72,11 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
 
 
 void Preprocessing::build_index(string id, vector<string> words){
-    vector<string> id_score;vector<vector<string>> posting_list;
+    vector<string> id_score;
+    vector<map<string,int>> posting_list;
     string score_sting;
     bool check;
-    int string_int;
+    int frequency;
     for(int i = 0; i< words.size(); i++)
     {
         check = false;
@@ -85,18 +86,18 @@ void Preprocessing::build_index(string id, vector<string> words){
             auto it = this->index.find(words[i]);
             posting_list = it->second;
 
-            //check if the id_doc is already present in the postinglist
+
 
             for (int j = 0; j < posting_list.size(); j++) {
+                //check if the id_doc is already present in the postinglist
+                if (posting_list[j].count(id)>0)
+                //from posting list of the word j-th I take all (docid, frequency)
                 if (posting_list[j][0].compare(id) == 0) {
                     //if I enter in the "if" I report it
                     check = true;
-                    //take the score
-                    score_sting = posting_list[j][1];
-                    //convert the score in integer
-                    string_int = stoi(score_sting);
-                    //increment the score of 1
-                    string_int++;
+                    //take the frequency
+                    int frequency = posting_list[j].find(id)->second++;
+
                     //reconvert the score in string;
                     score_sting = to_string(string_int);
                     //remove from posting_list old value
@@ -161,9 +162,9 @@ Preprocessing::Preprocessing(string path){
 
         c++;
         if (c == 200 ) {
-            for (map<string, vector<vector<string>>>::iterator ii = this->index.begin(); ii != this->index.end(); ++ii) {
+            for (map<string, vector<map<string,int>>>::iterator ii = this->index.begin(); ii != this->index.end(); ++ii) {
                 cout << (*ii).first << ": ";
-                vector<vector<string>> inVect = (*ii).second;
+                vector<map<string,int>> inVect = (*ii).second;
                 for (int j = 0; j < inVect.size(); j++) {
 
                     cout << "(" << inVect[j][0] << "," << inVect[j][1] << "),";

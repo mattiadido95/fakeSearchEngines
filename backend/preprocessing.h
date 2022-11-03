@@ -8,7 +8,7 @@ using namespace std;
 
 class Preprocessing{
     private:
-    map<string, vector<vector<string>>> index;
+    map<string, vector<map<string,int>>> index;
     vector<string> tokenization(string);
 
     vector<string> getStopwords();
