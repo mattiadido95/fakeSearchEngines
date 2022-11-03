@@ -13,7 +13,5 @@ using namespace std;
 int main() {
     // start preprocessing
     Preprocessing p("../../data/collection.tsv");
-
-
     return 0;
 }

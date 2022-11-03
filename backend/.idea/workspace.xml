@@ -7,9 +7,7 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated>
-      <config projectName="backend" targetName="backend" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -18,31 +16,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff384c0-35da-4278-9e34-f0badc7e075a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/http_server.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/http_server.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/rest_server.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/rest_server.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stopwords.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utility/utility.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utility/utility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PorterStemming.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/PorterStemming.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.out" beforeDir="false" afterPath="$PROJECT_DIR$/main.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing.h" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/browser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stopwords.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +64,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="backend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="backend" TARGET_NAME="backend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="backend" RUN_TARGET_NAME="backend">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -101,7 +81,7 @@
       <workItem from="1667214485590" duration="15865000" />
       <workItem from="1667317605708" duration="2297000" />
       <workItem from="1667408488712" duration="14846000" />
-      <workItem from="1667489581197" duration="4000" />
+      <workItem from="1667489581197" duration="184000" />
     </task>
     <servers />
   </component>
@@ -124,12 +104,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/preprocessing.cpp</url>
-          <line>168</line>
+          <line>170</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>14</line>
+          <line>18</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

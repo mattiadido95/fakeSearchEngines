@@ -1,5 +1,4 @@
 #include "preprocessing.h"
-
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -77,16 +76,15 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     return words;
 }
 
-
-void Preprocessing::build_index(string id, vector<string> words){
-    vector<string> id_score;vector<vector<string>> posting_list;
+void Preprocessing::build_index(string id, vector<string> words) {
+    vector<string> id_score;
+    vector<vector<string>> posting_list;
     string score_sting;
     bool check;
     int string_int;
-    for(int i = 0; i< words.size(); i++)
-    {
+    for (int i = 0; i < words.size(); i++) {
         check = false;
-        if (this->index.count(words[i])>0) //check if a single word exists in vocabulary
+        if (this->index.count(words[i]) > 0) //check if a single word exists in vocabulary
         {
             //extract the postlisting of the word i-th
             auto it = this->index.find(words[i]);
@@ -107,7 +105,7 @@ void Preprocessing::build_index(string id, vector<string> words){
                     //reconvert the score in string;
                     score_sting = to_string(string_int);
                     //remove from posting_list old value
-                    posting_list.erase(posting_list.begin()+j);
+                    posting_list.erase(posting_list.begin() + j);
                     //delete all row of map
                     this->index.erase(it);
                     //update new value in map
@@ -121,7 +119,7 @@ void Preprocessing::build_index(string id, vector<string> words){
                 }
             }
 
-        } else{
+        } else {
             //if I enter in the "else" I report it
             check = true;
             //update the vocabulary with new word and add new posting(id,score)
@@ -143,21 +141,21 @@ void Preprocessing::build_index(string id, vector<string> words){
     return;
 }
 
-Preprocessing::Preprocessing(string path){
+Preprocessing::Preprocessing(string path) {
     vector<string> words;
     vector<string> words2;
     vector<string> support;
     vector<string> wordsdocs;
     ifstream filein(path);
-    int c=0;
-    
-    for (string doc; getline(filein, doc); ) 
-    {
-        words= tokenization(doc);
-        
+    int c = 0;
+
+    for (string doc; getline(filein, doc);) {
+        words = tokenization(doc);
+
         string id = words[0];
         words.erase(words.begin());
         //stopword
+        cout << "start stopword detection" << endl;
         words = removeWordstop(words);
         //stemming
         words = porterStemming(words);
@@ -165,10 +163,10 @@ Preprocessing::Preprocessing(string path){
         build_index(id, words);
 
 
-
         c++;
-        if (c == 200 ) {
-            for (map<string, vector<vector<string>>>::iterator ii = this->index.begin(); ii != this->index.end(); ++ii) {
+        if (c == 200) {
+            for (map<string, vector<vector<string>>>::iterator ii = this->index.begin();
+                 ii != this->index.end(); ++ii) {
                 cout << (*ii).first << ": ";
                 vector<vector<string>> inVect = (*ii).second;
                 for (int j = 0; j < inVect.size(); j++) {
@@ -180,15 +178,8 @@ Preprocessing::Preprocessing(string path){
             break;
         }
 
-        
+
     }
-        filein.close();
-
-   
-
-
+    filein.close();
     //duplicate
-
-    
-    
 }
