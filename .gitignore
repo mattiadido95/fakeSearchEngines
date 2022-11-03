@@ -1,8 +1,7 @@
 /data
 /frontend/node_modules
 .DS_Store
-/backend/.idea/
+/backend/.idea
 /backend/CMakeLists.txt
 /backend/cmake-build-debug/
-/cmake-build-debug-wsl
 /.idea
