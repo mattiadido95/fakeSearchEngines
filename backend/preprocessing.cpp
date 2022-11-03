@@ -15,8 +15,15 @@ vector<string> Preprocessing::tokenization(string doc){
     vector<string> words;
       
     transform(doc.begin(), doc.end(), doc.begin(), ::tolower);  
-    
-    regex re("\\s+|\\!|\"|\\#|\\$|\\%|\\&|\\'|\\(|\\)|\\*|\\+|\\,|\\-|\\.|\\/|\\:|\\;|\\<|\\=|\\>|\\|\\?|\\@|\\[|\\]|\\^|\\_|\\`|\\{|\\||\\}|\\~");
+    /*
+     * removed |\\_ because on it causes
+     * libc++abi: terminating with uncaught exception of type
+     * std::__1::regex_error: The expression contained an
+     * invalid escaped character, or a trailing escape.
+     */
+    regex re("\\s+|\\!|\"|\\#|\\$|\\%|\\&|\\'|\\(|\\)|\\*|\\+|"
+             "\\,|\\-|\\.|\\/|\\:|\\;|\\<|\\=|\\>|\\|\\?|\\@|\\[|"
+             "\\]|\\^|\\`|\\{|\\||\\}|\\~");
     sregex_token_iterator it(doc.begin(), doc.end(), re, -1);
     sregex_token_iterator reg_end;
     
