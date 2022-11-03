@@ -6,7 +6,7 @@
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include <map>
-#include "utility/utility.cpp"
+#include "utility/utility.h"
 
 using namespace std;
 
