@@ -1,5 +1,4 @@
 #include "preprocessing.h"
-
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -7,7 +6,7 @@
 #include <regex>
 #include <algorithm> //serve per lower o upper
 #include <map>
-#include "utility/utility.cpp"
+#include "utility/utility.h"
 
 using namespace std;
 
@@ -51,6 +50,7 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     //  get stopwords list
     //cout << "- start import stopword list ..." << endl;
     vector<string> stopwords = getStopwords();
+    utility utility;
     //cout << "   -> number of stopword imported " << stopwords.size() << endl;
 
     //      create for loop to remove stopwords from tokens list
@@ -59,7 +59,8 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     std::sort(words.begin(), words.end()); // sort word array to implement binary search
     for (vector<string>::iterator s = stopwords.begin(); s != stopwords.end(); s++) {
         // cout << "   -> find stopword: " << *s << ": ";
-        int res = binary_search(words, *s, words.size());
+
+        int res = utility.binary_search(words, *s, words.size());
         if (res != -1) {
 //              cout << "FOUND" << endl;
             index_list.push_back(res);
@@ -140,7 +141,8 @@ Preprocessing::Preprocessing(string path){
 
 
         c++;
-        if (c == 200 ) {
+        cout<<c<<endl;
+        if (c == 1000 ) {
             for (auto ii = this->index.begin(); ii != this->index.end(); ++ii) {
                 cout << ii->first << ": ";
                 map<string,int> inVect = ii->second;
@@ -165,3 +167,5 @@ Preprocessing::Preprocessing(string path){
     
     
 }
+
+
