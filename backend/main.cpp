@@ -8,6 +8,7 @@
 #include "preprocessing.h"
 #include "utility/FileManager.h"
 #include "utility/availableMemory.cpp"
+#include "index/Index.h"
 
 using namespace std;
 
@@ -15,6 +16,10 @@ int main() {
     // start preprocessing
     unsigned long long Memory = getTotalSystemMemory();
     cout<<Memory<<endl;
-    Preprocessing p("../../data/collection.tsv");
+
+
+
+    Index *i = new Index();
+    Preprocessing p("../../data/collection.tsv", i);
     return 0;
 }

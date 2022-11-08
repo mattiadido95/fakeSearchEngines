@@ -7,6 +7,7 @@
 #include <algorithm> //serve per lower o upper
 #include <map>
 #include "utility/utility.h"
+#include "index/Index.h"
 
 using namespace std;
 
@@ -78,46 +79,53 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     return words;
 }
 
+void Preprocessing::build_index(string docid, vector<string> words){
+    this->index->addDocIndex(docid,words.size());
+    for(int i = 0; i< words.size(); i++){
+        this->index->addLexicon(docid,words[i]);
 
-void Preprocessing::build_index(string id, vector<string> words){
-    map<string,int> posting_list;
-    string score_sting;
-    int frequency;
-    for(int i = 0; i< words.size(); i++)
-    {
-        if (this->index.count(words[i])>0) //check if a single word exists in vocabulary
-        {
-            //extract the postlisting of the word i-th
-            auto it = this->index.find(words[i]);
-            posting_list = it->second;
-
-            //from posting list of the word j-th I take all (docid, frequency)
-            if (posting_list.count(id)>0) {
-                //if I enter in the "if" I report it
-                //take the frequency and increasing the value of 1
-                frequency = posting_list.find(id)->second++;
-                //remove from posting_list old posting
-                posting_list.erase(id);
-                //delete all row of map
-                this->index.erase(it);
-                //update new value in map
-                posting_list.insert(pair<string,int>(id, frequency));
-                this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
-                posting_list.clear();
-                break;
-            }
-        }else{
-            //it means that the word[i] exists but the document has not yet been added to the postilisting of it
-            posting_list.insert(pair<string,int>(id, 1));
-
-            this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
-            posting_list.clear();
-        }
     }
-    return;
 }
+//void Preprocessing::build_index(string id, vector<string> words){
+//    map<string,int> posting_list;
+//    string score_sting;
+//    int frequency;
+//    for(int i = 0; i< words.size(); i++)
+//    {
+//        if (this->index.count(words[i])>0) //check if a single word exists in vocabulary
+//        {
+//            //extract the postlisting of the word i-th
+//            auto it = this->index.find(words[i]);
+//            posting_list = it->second;
+//
+//            //from posting list of the word j-th I take all (docid, frequency)
+//            if (posting_list.count(id)>0) {
+//                //if I enter in the "if" I report it
+//                //take the frequency and increasing the value of 1
+//                frequency = posting_list.find(id)->second++;
+//                //remove from posting_list old posting
+//                posting_list.erase(id);
+//                //delete all row of map
+//                this->index.erase(it);
+//                //update new value in map
+//                posting_list.insert(pair<string,int>(id, frequency));
+//                this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
+//                posting_list.clear();
+//                break;
+//            }
+//        }else{
+//            //it means that the word[i] exists but the document has not yet been added to the postilisting of it
+//            posting_list.insert(pair<string,int>(id, 1));
+//
+//            this->index.insert(pair<string, map<string,int>>(words[i], posting_list));
+//            posting_list.clear();
+//        }
+//    }
+//    return;
+//}
 
-Preprocessing::Preprocessing(string path){
+Preprocessing::Preprocessing(string path, Index * index){
+    this->index=index;
     vector<string> words;
     vector<string> words2;
     vector<string> support;
@@ -136,22 +144,27 @@ Preprocessing::Preprocessing(string path){
         //stemming
         words = porterStemming(words);
         //index
+        //1. add info of the document
         build_index(id, words);
+
 
 
 
         c++;
         cout<<c<<endl;
         if (c == 1000 ) {
-            for (auto ii = this->index.begin(); ii != this->index.end(); ++ii) {
-                cout << ii->first << ": ";
-                map<string,int> inVect = ii->second;
-                for (auto tt = inVect.begin(); tt != inVect.end(); ++tt){
-
-                    cout << "(" << tt->first << "," << tt->second << "),";
-                }
-                cout << endl;
+            for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
+                cout << ii->first << "---> "<<"cf: "<< ii->second.cf<<" df: "<< ii->second.df<<endl;
             }
+//            for (auto ii = this->index.begin(); ii != this->index.end(); ++ii) {
+//                cout << ii->first << ": ";
+//                map<string,int> inVect = ii->second;
+//                for (auto tt = inVect.begin(); tt != inVect.end(); ++tt){
+//
+//                    cout << "(" << tt->first << "," << tt->second << "),";
+//                }
+//                cout << endl;
+//            }
             break;
         }
 
