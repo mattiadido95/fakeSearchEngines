@@ -19,7 +19,7 @@ class Preprocessing{
     // stemming();
     vector<string> porterStemming(vector<string>);
     // remove duplicate
-    void build_index( string,vector<string>);
+    int build_index( string,vector<string>);
 
     public:
     Preprocessing(string,Index*);

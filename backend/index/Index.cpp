@@ -8,7 +8,7 @@ void Index::addDocIndex(string docid, int len){
     documentIndex.insert(pair<string,int>(docid,len));
 }
 
-void Index::addLexicon(string docid, string token){
+int Index::addLexicon(string docid, string token){
     term_info termInfo;
     post Post;
     vector<post> sad;
@@ -18,21 +18,18 @@ void Index::addLexicon(string docid, string token){
         termInfo = it->second;
         it->second.cf++;
 
-
-
-        for(int i = 0; i< static_cast<vector<post>>(*termInfo.posting_list).size(); i++){
+        for(int i = 0; i< (*termInfo.posting_list).size(); i++){
             if ((*termInfo.posting_list)[i].id == docid){
-
                  (*termInfo.posting_list)[i].tf ++;
-
-                return;
+                return 0;
             }
         }
+
         Post.id = docid;
         Post.tf = 1;
         it->second.df++;
         (*termInfo.posting_list).push_back(Post);
-        return;
+        return sizeof(Post);
 
 }
     termInfo.cf = 1;
@@ -45,5 +42,5 @@ void Index::addLexicon(string docid, string token){
     (*pl).push_back(Post);
     termInfo.posting_list= pl;
     lexicon.insert(pair<string,term_info>(token,termInfo));
-    return;
+    return sizeof(termInfo)+sizeof((*termInfo.posting_list));
 }
