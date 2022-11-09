@@ -12,25 +12,26 @@ void Index::addLexicon(string docid, string token){
     term_info termInfo;
     post Post;
     vector<post> sad;
+
     if (lexicon.count(token)>0){ //check if a single word exists in vocabulary
         auto it = this->lexicon.find(token);
         termInfo = it->second;
-        termInfo.cf++;
+        it->second.cf++;
 
 
 
         for(int i = 0; i< static_cast<vector<post>>(*termInfo.posting_list).size(); i++){
-            if (static_cast<vector<post>>(*termInfo.posting_list)[i].id == docid){
-                static_cast<vector<post>>(*termInfo.posting_list)[i].tf ++;
+            if ((*termInfo.posting_list)[i].id == docid){
+
+                 (*termInfo.posting_list)[i].tf ++;
+
                 return;
             }
         }
         Post.id = docid;
         Post.tf = 1;
-        termInfo.df++;
-        static_cast<vector<post>>(*termInfo.posting_list).push_back(Post);
-        this->lexicon.erase(it);
-        lexicon.insert(pair<string,term_info>(token,termInfo));
+        it->second.df++;
+        (*termInfo.posting_list).push_back(Post);
         return;
 
 }

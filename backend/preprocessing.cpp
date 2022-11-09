@@ -151,10 +151,12 @@ Preprocessing::Preprocessing(string path, Index * index){
 
 
         c++;
-        cout<<c<<endl;
         if (c == 1000 ) {
             for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
                 cout << ii->first << "---> "<<"cf: "<< ii->second.cf<<" df: "<< ii->second.df<<endl;
+                for(int i = 0; i< static_cast<vector<post>>(*ii->second.posting_list).size(); i++){
+                    cout<<"     id:"<<static_cast<vector<post>>(*ii->second.posting_list)[i].id<<" tf: "<< static_cast<vector<post>>(*ii->second.posting_list)[i].tf<<endl;
+                }
             }
 //            for (auto ii = this->index.begin(); ii != this->index.end(); ++ii) {
 //                cout << ii->first << ": ";
