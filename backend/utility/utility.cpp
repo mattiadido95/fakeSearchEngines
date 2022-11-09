@@ -1,13 +1,13 @@
 #include "utility.h"
 
-void show_array(string arr[], int arraysize) {
+void utility::show_array(string arr[], int arraysize) {
     for (int i = 0; i < arraysize; i++)
         cout << arr[i] << ", ";
 
     cout << endl;
 }
 
-string *vector_to_array(vector<string> tokenList) {
+string *utility::vector_to_array(vector<string> tokenList) {
 //    not work very well
     int arraySize = tokenList.size();
     string *arrayString = new string[arraySize];
@@ -21,7 +21,7 @@ string *vector_to_array(vector<string> tokenList) {
     return arrayString;
 }
 
-int binary_search(vector<string> stopwords, string token, int size) {
+int utility::binary_search(vector<string> stopwords, string token, int size) {
     int l = 0;
     int r = size - 1;
     while (l <= r) {

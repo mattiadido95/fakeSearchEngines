@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakePresetLoader">{
-  &quot;useNewFormat&quot;: true
-}</component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -17,20 +17,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ff384c0-35da-4278-9e34-f0badc7e075a" name="Changes" comment="">
+    <list default="true" id="c1e63c3d-1727-4d1c-ad9b-3576cfbe84bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utility/availableMemory.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utility/utilityold.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PorterStemming.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/PorterStemming.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.out" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing.h" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/utility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +40,6 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CMakeLists.txt" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -59,7 +51,7 @@
     <option name="majorVersion" value="2022" />
     <option name="minorVersion" value="2.4" />
   </component>
-  <component name="ProjectId" id="2GtisCmqdVDNC3xY24vnj7pnGCK" />
+  <component name="ProjectId" id="2HJHUyeJo4quBjPMLalxzvWxjJz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -73,15 +65,13 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/MATTI/Documents/AIDE/Projects/ComputerVision/fakeSearchEngines/backend",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CMakeSettings"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="backend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="backend" TARGET_NAME="backend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="backend" RUN_TARGET_NAME="backend">
@@ -93,17 +83,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6ff384c0-35da-4278-9e34-f0badc7e075a" name="Changes" comment="" />
-      <created>1667214484316</created>
+      <changelist id="c1e63c3d-1727-4d1c-ad9b-3576cfbe84bc" name="Changes" comment="" />
+      <created>1667996285756</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1667214484316</updated>
-      <workItem from="1667214485590" duration="15865000" />
-      <workItem from="1667317605708" duration="2297000" />
-      <workItem from="1667408488712" duration="14846000" />
-      <workItem from="1667489581197" duration="694000" />
-      <workItem from="1667490292402" duration="130000" />
-      <workItem from="1667497187169" duration="234000" />
+      <updated>1667996285756</updated>
+      <workItem from="1667996288370" duration="289000" />
     </task>
     <servers />
   </component>
@@ -120,16 +105,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/preprocessing.cpp</url>
-          <line>165</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

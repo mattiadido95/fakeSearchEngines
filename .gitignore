@@ -3,5 +3,5 @@
 .DS_Store
 /backend/.idea
 /backend/CMakeLists.txt
-/backend/cmake-build-debug/
+/backend/cmake-build-debug
 /.idea
