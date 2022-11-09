@@ -11,10 +11,10 @@
 
 using namespace std;
 
-vector<string> Preprocessing::tokenization(string doc){  
+vector<string> Preprocessing::tokenization(string doc) {
     vector<string> words;
-      
-    transform(doc.begin(), doc.end(), doc.begin(), ::tolower);  
+
+    transform(doc.begin(), doc.end(), doc.begin(), ::tolower);
     /*
      * removed |\\_ because on it causes
      * libc++abi: terminating with uncaught exception of type
@@ -26,10 +26,10 @@ vector<string> Preprocessing::tokenization(string doc){
              "\\]|\\^|\\`|\\{|\\||\\}|\\~");
     sregex_token_iterator it(doc.begin(), doc.end(), re, -1);
     sregex_token_iterator reg_end;
-    
+
     for (; it != reg_end; ++it) {
         if (it->str() == "")
-                continue;
+            continue;
         words.push_back(it->str());
     }
 
@@ -37,6 +37,7 @@ vector<string> Preprocessing::tokenization(string doc){
     return words;
 
 }
+
 vector<string> Preprocessing::getStopwords() {
     vector<string> stopwords;
     ifstream file("../../data/stop_words_english.txt");
@@ -79,10 +80,10 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     return words;
 }
 
-void Preprocessing::build_index(string docid, vector<string> words){
-    this->index->addDocIndex(docid,words.size());
-    for(int i = 0; i< words.size(); i++){
-        this->index->addLexicon(docid,words[i]);
+void Preprocessing::build_index(string docid, vector<string> words) {
+    this->index->addDocIndex(docid, words.size());
+    for (int i = 0; i < words.size(); i++) {
+        this->index->addLexicon(docid, words[i]);
 
     }
 }
@@ -124,19 +125,18 @@ void Preprocessing::build_index(string docid, vector<string> words){
 //    return;
 //}
 
-Preprocessing::Preprocessing(string path, Index * index){
-    this->index=index;
+Preprocessing::Preprocessing(string path, Index *index) {
+    this->index = index;
     vector<string> words;
     vector<string> words2;
     vector<string> support;
     vector<string> wordsdocs;
     ifstream filein(path);
-    int c=0;
-    
-    for (string doc; getline(filein, doc); ) 
-    {
-        words= tokenization(doc);
-        
+    int c = 0;
+
+    for (string doc; getline(filein, doc);) {
+        words = tokenization(doc);
+
         string id = words[0];
         words.erase(words.begin());
         //stopword
@@ -148,14 +148,13 @@ Preprocessing::Preprocessing(string path, Index * index){
         build_index(id, words);
 
 
-
-
         c++;
-        if (c == 1000 ) {
+        if (c == 1000) {
             for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
-                cout << ii->first << "---> "<<"cf: "<< ii->second.cf<<" df: "<< ii->second.df<<endl;
-                for(int i = 0; i< static_cast<vector<post>>(*ii->second.posting_list).size(); i++){
-                    cout<<"     id:"<<static_cast<vector<post>>(*ii->second.posting_list)[i].id<<" tf: "<< static_cast<vector<post>>(*ii->second.posting_list)[i].tf<<endl;
+                cout << ii->first << "---> " << "cf: " << ii->second.cf << " df: " << ii->second.df << endl;
+                for (int i = 0; i < static_cast<vector<post>>(*ii->second.posting_list).size(); i++) {
+                    cout << "     id:" << static_cast<vector<post>>(*ii->second.posting_list)[i].id << " tf: "
+                         << static_cast<vector<post>>(*ii->second.posting_list)[i].tf << endl;
                 }
             }
 //            for (auto ii = this->index.begin(); ii != this->index.end(); ++ii) {
@@ -170,17 +169,17 @@ Preprocessing::Preprocessing(string path, Index * index){
             break;
         }
 
-        
-    }
-        filein.close();
 
-   
+    }
+    filein.close();
+
+
 
 
     //duplicate
 
-    
-    
+
+
 }
 
 
