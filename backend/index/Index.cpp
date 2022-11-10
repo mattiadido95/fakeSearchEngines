@@ -31,7 +31,6 @@ int Index::addLexicon(string docid, string token) {
         it->second.df++;
         (*termInfo.posting_list).push_back(Post);
         return sizeof(Post);
-
     }
     termInfo.cf = 1;
     termInfo.df = 1;

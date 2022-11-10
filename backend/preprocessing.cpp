@@ -8,6 +8,7 @@
 #include <map>
 #include "utility/utility.h"
 #include "index/Index.h"
+#include "utility/availableMemory.h"
 
 using namespace std;
 
@@ -87,6 +88,7 @@ int Preprocessing::build_index(string docid, vector<string> words) {
     }
     return weight;
 }
+
 //void Preprocessing::build_index(string id, vector<string> words){
 //    map<string,int> posting_list;
 //    string score_sting;
@@ -134,24 +136,20 @@ Preprocessing::Preprocessing(string path, Index *index) {
     ifstream filein(path);
     int c = 0, weight = 0;
 
-
     for (string doc; getline(filein, doc);) {
-        words = tokenization(doc);
 
+        cout << "-> used memory: " << getValue() << " MB" << endl;
+
+        words = tokenization(doc);
         string id = words[0];
         words.erase(words.begin());
-        //stopword
-        words = removeWordstop(words);
-        //stemming
-        words = porterStemming(words);
-        //index
-        //1. add info of the document
-        weight += build_index(id, words);
+        words = removeWordstop(words);//stopword
+        words = porterStemming(words);//stemming
+        weight += build_index(id, words);//index -> 1. add info of the document
 
-        //cout<< "Tot MB:  "<< weight/1000<<endl;
+//        cout << "Tot MB:  " << weight / (1048576) << endl;
 
         c++;
-
         if (c % 1000 == 0) {
             ifstream file_term, file_ii;
             file_term.open("../../data/index/vocabulary.txt");
@@ -166,7 +164,7 @@ Preprocessing::Preprocessing(string path, Index *index) {
                 ofstream invertindex("../../data/index/invertindex1.txt");
                 int line_doc = 0; //mi segno in che liena del doc mi trovo
                 while (getline(file_term, word) && (getline(file_ii, invrtIndex))) {
-                    //rimove , of the dectionary
+                    //remove , of the dectionary
                     sregex_token_iterator it(word.begin(), word.end(), re, -1);
                     sregex_token_iterator reg_end;
                     //extract by line the values
@@ -179,18 +177,16 @@ Preprocessing::Preprocessing(string path, Index *index) {
                     termInfo.df = stoi(it->str());
 
                     for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
-                        if (token.compare(ii->first) ==
-                            0) //check if the line of vocabulary and token that I have, they are equal
-                        {
+                        //check if the line of vocabulary and token that I have, they are equal
+                        if (token.compare(ii->first) == 0) {
                             // cout<< "term save: "<<token<<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
                             // cout<< "term new: "<< ii->first << "," << ii->second.cf << "," << ii->second.df << endl;
                             termInfo.cf += ii->second.cf;
                             termInfo.df += ii->second.df;
                             //  cout<< "fusion: "<<token <<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
                             term << token << "," << termInfo.cf << "," << termInfo.df
-                                 << endl; // apdate the value ov vocabulary
+                                 << endl; // update the value of vocabulary
                             //update the vector of invetedindex
-
                             sregex_token_iterator ll(invrtIndex.begin(), invrtIndex.end(), re, -1);
                             sregex_token_iterator reg_end;
                             for (; ll != reg_end; ++ll) {
@@ -215,10 +211,10 @@ Preprocessing::Preprocessing(string path, Index *index) {
                 invertindex.close();
                 file_term.close();
                 file_ii.close();
-                remove("../../data/index/vocabulary.txt");
-                remove("../../data/index/invertindex.txt");
-                rename("../../data/index/vocabulary1.txt", "../../data/index/vocabulary.txt");
-                rename("../../data/index/invertindex1.txt", "../../data/index/invertindex.txt");
+//                remove("../../data/index/vocabulary.txt");
+//                remove("../../data/index/invertindex.txt");
+//                rename("../../data/index/vocabulary1.txt", "../../data/index/vocabulary.txt");
+//                rename("../../data/index/invertindex1.txt", "../../data/index/invertindex.txt");
             } else {
                 ofstream term("../../data/index/vocabulary.txt");
                 ofstream invertindex("../../data/index/invertindex.txt");
@@ -235,20 +231,10 @@ Preprocessing::Preprocessing(string path, Index *index) {
                 term.close();
                 invertindex.close();
             }
-//cout<<"peso effettivo:"  <<weight<<endl;
+            cout << "peso effettivo:" << weight / 1048576 << endl;
             cout << "indice caricato: " << c * 100 / 8841822 << "%" << endl;
         }
-
-
     }
     filein.close();
-
-
-
-
-    //duplicate
-
-
-
 }
 
