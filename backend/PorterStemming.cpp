@@ -145,7 +145,7 @@ void setto(int len_inc, char *add, char a[]) {
     // cout<<"\nI am here now";
     int len3 = len_inc;
     if (parameter == 1) {
-        char temp1[15];
+        char temp1[40];
         memset(temp1, 0, sizeof(temp1)); /*setting temp1 to null*/
         memcpy(temp1, a, k + 1); /*copying the contents of array a till the parameter k passed into temp1*/
         memset(a, '\0',
@@ -156,7 +156,7 @@ void setto(int len_inc, char *add, char a[]) {
     }
     k += len_inc;
     strcat(a, add); /*Concatenating the suffix passed. Eg:pon(a)+i(add)=poni(a)*/
-    char temp[15];
+    char temp[40];
     memset(temp, 0, sizeof(temp));
     memcpy(temp, a, k + 1);
     memset(a, 0, sizeof(a));
@@ -171,7 +171,7 @@ int ends(char a[], char *s, int length, int j) //lunghezza radice
     int last_w;
     int len = length;
     int pos = k - length + 1;
-    char temp[20];
+    char temp[40];
     memset(temp, 0, sizeof(temp));
     for (int m = 0; m <= len - 1; m++) {
 
@@ -275,7 +275,7 @@ void step2(char a[], int j) {
                 if (ends(a, "ational", 7, k)) {
                     k -= 7;
                     parameter = 1;
-                    cout << "The value is " << " " << k;
+                  //  cout << "The value is " << " " << k;
                     setto(3, "ate", a);
                     break;
                 }
@@ -650,7 +650,7 @@ int stem(char a[], int i, int j) {
 vector<string> Preprocessing::porterStemming(
         vector<string> tokens) { /*main and stemfile function.----------------------------------------------*/
     vector<string> word_stem;
-    cout << tokens.size() << endl;
+   // cout << tokens.size() << endl;
     for (int i = 0; i < tokens.size(); i++) {
         char word[tokens[i].length() + 1];
         strcpy(word, tokens[i].c_str());

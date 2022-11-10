@@ -9,4 +9,4 @@ add_executable(backend
         main.cpp
         preprocessing.cpp
         preprocessing.h
-        PorterStemming.cpp)
+        PorterStemming.cpp utility/utility.cpp utility/utility.h index/Index.cpp index/Index.h)
