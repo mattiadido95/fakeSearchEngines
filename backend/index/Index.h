@@ -18,7 +18,6 @@ struct term_info{
     int end_ind;
     vector<post> *posting_list;
 };
-
 class Index {
 private:
 
@@ -27,7 +26,7 @@ public:
     map<string, term_info> lexicon;
     map<string,int> documentIndex;
     void addDocIndex(string,int);
-    void addLexicon(string, string);
+    int addLexicon(string, string);
     void add_document_index(string,int);
     string docid(); //restituisce il docid del post corrente
     void next(); //sposta in sequenza l'iteratore al successivo
