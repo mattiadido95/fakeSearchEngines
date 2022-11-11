@@ -13,20 +13,21 @@ struct post {
 };
 
 struct term_info {
-    int df; //number of doc that mantein this term
-    int cf; //total number of occurency
+    int df; //number of doc that maintain this term
+    int cf; //total number of occurrence
     int start_ind;
     int end_ind;
-    vector<post> *posting_list;
+    vector<int> prova;
+    vector <post> *posting_list;
 };
 
 class Index {
+
 private:
-
-public:
-    map<string, term_info> lexicon;
+    map <string, term_info> lexicon;
     map<string, int> documentIndex;
-
+    stxxl::vector<int> prova;
+public:
     void addDocIndex(string, int);
 
     int addLexicon(string, string);
@@ -36,6 +37,10 @@ public:
     string docid(); //restituisce il docid del post corrente
     void next(); //sposta in sequenza l'iteratore al successivo
     void nextGEQ(string); //sposta l'iteratore al successivo con id del posting >=
+
+    map <string, term_info> getLexicon() { return lexicon; }
+
+    map<string, int> getDocumentIndex() { return documentIndex; }
 
 };
 

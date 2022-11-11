@@ -8,13 +8,12 @@
 #include <map>
 #include "utility/utility.h"
 #include "index/Index.h"
-#include "utility/availableMemory.h"
 
 using namespace std;
 
-vector<string> Preprocessing::tokenization(string doc) {
+vector<string> Preprocessing::tokenization(string doc){  
     vector<string> words;
-    transform(doc.begin(), doc.end(), doc.begin(), ::tolower);
+    transform(doc.begin(), doc.end(), doc.begin(), ::tolower);  
     /*
      * removed |\\_ because on it causes
      * libc++abi: terminating with uncaught exception of type
@@ -26,10 +25,10 @@ vector<string> Preprocessing::tokenization(string doc) {
              "\\]|\\^|\\`|\\{|\\||\\}|\\~");
     sregex_token_iterator it(doc.begin(), doc.end(), re, -1);
     sregex_token_iterator reg_end;
-
+    
     for (; it != reg_end; ++it) {
         if (it->str() == "")
-            continue;
+                continue;
         words.push_back(it->str());
     }
 
@@ -37,7 +36,6 @@ vector<string> Preprocessing::tokenization(string doc) {
     return words;
 
 }
-
 vector<string> Preprocessing::getStopwords() {
     vector<string> stopwords;
     ifstream file("../../data/stop_words_english.txt");
@@ -47,6 +45,14 @@ vector<string> Preprocessing::getStopwords() {
     }
     return stopwords;
 }
+
+/*
+ * lessico : termine, df, cf, vector<int> posizione blocchi
+ * docinfo : dociid, len_doc
+ * posting list : doc_id, tf
+ *
+ * hash term -> vector<posting> (memory mapping)
+ */
 
 vector<string> Preprocessing::removeWordstop(vector<string> words) {
     //  get stopwords list
@@ -80,15 +86,15 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     return words;
 }
 
-int Preprocessing::build_index(string docid, vector<string> words) {
+//takes id and tokenized words of the doc
+int Preprocessing::build_index(string docid, vector<string> words){
     int weight = 0;
-    this->index->addDocIndex(docid, words.size());
-    for (int i = 0; i < words.size(); i++) {
-        weight = weight + this->index->addLexicon(docid, words[i]);
+    this->index->addDocIndex(docid,words.size());
+    for(int i = 0; i< words.size(); i++){
+        weight = weight + this->index->addLexicon(docid,words[i]);
     }
     return weight;
 }
-
 //void Preprocessing::build_index(string id, vector<string> words){
 //    map<string,int> posting_list;
 //    string score_sting;
@@ -127,66 +133,72 @@ int Preprocessing::build_index(string docid, vector<string> words) {
 //    return;
 //}
 
-Preprocessing::Preprocessing(string path, Index *index) {
-    this->index = index;
+Preprocessing::Preprocessing(string path, Index * index){
+    this->index=index;
     vector<string> words;
     vector<string> words2;
     vector<string> support;
     vector<string> wordsdocs;
     ifstream filein(path);
-    int c = 0, weight = 0;
+    int c=0, weight = 0;
 
-    for (string doc; getline(filein, doc);) {
+    
+    for (string doc; getline(filein, doc); ) 
+    {
+        words= tokenization(doc);
 
-        cout << "-> used memory: " << getValue() << " MB" << endl;
-
-        words = tokenization(doc);
+        //store id and remove it form doc
         string id = words[0];
         words.erase(words.begin());
-        words = removeWordstop(words);//stopword
-        words = porterStemming(words);//stemming
-        weight += build_index(id, words);//index -> 1. add info of the document
+        //stopword
+        words = removeWordstop(words);
+        //stemming
+        words = porterStemming(words);
+        //index
+        //1. add info of the document
+        weight += build_index(id, words);
 
-//        cout << "Tot MB:  " << weight / (1048576) << endl;
+        //cout<< "Tot MB:  "<< weight/1000<<endl;
 
         c++;
-        if (c % 1000 == 0) {
-            ifstream file_term, file_ii;
-            file_term.open("../../data/index/vocabulary.txt");
-            file_ii.open("../../data/index/invertindex.txt");
-            regex re("\\,");
-            vector<post> extract_posts;
-            post extract_post;
-            if (file_term) {
-                string word;
-                string invrtIndex;
-                ofstream term("../../data/index/vocabulary1.txt");
-                ofstream invertindex("../../data/index/invertindex1.txt");
-                int line_doc = 0; //mi segno in che liena del doc mi trovo
-                while (getline(file_term, word) && (getline(file_ii, invrtIndex))) {
-                    //remove , of the dectionary
-                    sregex_token_iterator it(word.begin(), word.end(), re, -1);
-                    sregex_token_iterator reg_end;
-                    //extract by line the values
-                    string token;
-                    term_info termInfo;
-                    token = it->str();
-                    ++it;
-                    termInfo.cf = stoi(it->str());
-                    ++it;
-                    termInfo.df = stoi(it->str());
+        if (c%1000==0 ) {
 
-                    for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
-                        //check if the line of vocabulary and token that I have, they are equal
-                        if (token.compare(ii->first) == 0) {
-                            // cout<< "term save: "<<token<<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
-                            // cout<< "term new: "<< ii->first << "," << ii->second.cf << "," << ii->second.df << endl;
+           ifstream file_term, file_ii;
+           file_term.open("../../data/index/vocabulary.txt");
+           file_ii.open("../../data/index/invertindex.txt");
+           regex re("\\,");
+           vector<post> extract_posts;
+           post extract_post;
+           if(file_term){
+               string word;
+               string invrtIndex;
+               ofstream term("../../data/index/vocabulary1.txt");
+               ofstream invertindex("../../data/index/invertindex1.txt");
+               int line_doc = 0; //mi segno in che liena del doc mi trovo
+               while (getline(file_term, word) && (getline(file_ii, invrtIndex))) {
+                   //rimove , of the dectionary
+                   sregex_token_iterator it(word.begin(), word.end(), re, -1);
+                   sregex_token_iterator reg_end;
+                   //extract by line the values
+                   string token;
+                   term_info termInfo;
+                   token = it->str();
+                   ++it;
+                   termInfo.cf = stoi(it->str());
+                   ++it;
+                   termInfo.df = stoi(it->str());
+
+                   for (auto ii = this->index->getLexicon().begin(); ii != this->index->getLexicon().end(); ++ii) {
+                        if(token.compare(ii->first) == 0) //check if the line of vocabulary and token that I have, they are equal
+                        {
+                           // cout<< "term save: "<<token<<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
+                           // cout<< "term new: "<< ii->first << "," << ii->second.cf << "," << ii->second.df << endl;
                             termInfo.cf += ii->second.cf;
                             termInfo.df += ii->second.df;
-                            //  cout<< "fusion: "<<token <<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
-                            term << token << "," << termInfo.cf << "," << termInfo.df
-                                 << endl; // update the value of vocabulary
-                            //update the vector of invetedindex
+                          //  cout<< "fusion: "<<token <<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
+                            term << token << "," << termInfo.cf << "," << termInfo.df << endl; // apdate the value ov vocabulary
+                             //update the vector of invetedindex
+
                             sregex_token_iterator ll(invrtIndex.begin(), invrtIndex.end(), re, -1);
                             sregex_token_iterator reg_end;
                             for (; ll != reg_end; ++ll) {
@@ -195,8 +207,7 @@ Preprocessing::Preprocessing(string path, Index *index) {
                                 extract_post.tf = stoi(ll->str());
                                 extract_posts.push_back(extract_post);
                             }
-                            extract_posts.insert(extract_posts.end(), (*ii->second.posting_list).begin(),
-                                                 (*ii->second.posting_list).end());
+                            extract_posts.insert( extract_posts.end(), (*ii->second.posting_list).begin(), (*ii->second.posting_list).end() );
                             for (int i = 0; i < extract_posts.size(); i++) {
                                 invertindex << extract_posts[i].id << "," << extract_posts[i].tf;
                                 if (i != extract_posts.size() - 1)
@@ -205,36 +216,48 @@ Preprocessing::Preprocessing(string path, Index *index) {
                             extract_posts.clear();
                             invertindex << endl;
                         }
-                    }
-                }
-                term.close();
-                invertindex.close();
-                file_term.close();
-                file_ii.close();
-//                remove("../../data/index/vocabulary.txt");
-//                remove("../../data/index/invertindex.txt");
-//                rename("../../data/index/vocabulary1.txt", "../../data/index/vocabulary.txt");
-//                rename("../../data/index/invertindex1.txt", "../../data/index/invertindex.txt");
-            } else {
-                ofstream term("../../data/index/vocabulary.txt");
-                ofstream invertindex("../../data/index/invertindex.txt");
-                for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
-                    term << ii->first << "," << ii->second.cf << "," << ii->second.df << endl;//term,cf,df
-                    //    cout << ii->first << "," << ii->second.cf << "," << ii->second.df << endl;
-                    for (int i = 0; i < (*ii->second.posting_list).size(); i++) {
-                        invertindex << (*ii->second.posting_list)[i].id << "," << (*ii->second.posting_list)[i].tf;
-                        if (i != (*ii->second.posting_list).size() - 1)
-                            invertindex << ",";
-                    }
-                    invertindex << endl;
-                }
-                term.close();
-                invertindex.close();
-            }
-            cout << "peso effettivo:" << weight / 1048576 << endl;
-            cout << "indice caricato: " << c * 100 / 8841822 << "%" << endl;
+                   }
+               }
+               term.close();
+               invertindex.close();
+               file_term.close();
+               file_ii.close();
+               remove("../../data/index/vocabulary.txt");
+               remove("../../data/index/invertindex.txt");
+               rename("../../data/index/vocabulary1.txt", "../../data/index/vocabulary.txt" );
+               rename("../../data/index/invertindex1.txt", "../../data/index/invertindex.txt" );
+               }
+           else {
+               ofstream term("../../data/index/vocabulary.txt");
+               ofstream invertindex("../../data/index/invertindex.txt");
+               for (auto ii = this->index->getLexicon().begin(); ii != this->index->getLexicon().end(); ++ii) {
+                   term << ii->first << "," << ii->second.cf << "," << ii->second.df << endl;//term,cf,df
+               //    cout << ii->first << "," << ii->second.cf << "," << ii->second.df << endl;
+                   for (int i = 0; i < (*ii->second.posting_list).size(); i++) {
+                       invertindex << (*ii->second.posting_list)[i].id << "," << (*ii->second.posting_list)[i].tf;
+                       if (i != (*ii->second.posting_list).size() - 1)
+                           invertindex << ",";
+                   }
+                   invertindex << endl;
+               }
+               term.close();
+               invertindex.close();
+           }
+        //cout<<"peso effettivo:"  <<weight<<endl;
+            cout<<"indice caricato: "<< c*100/8841822 <<"%"<<endl;
         }
+
+
     }
-    filein.close();
+        filein.close();
+
+   
+
+
+    //duplicate
+
+    
+    
 }
+
 

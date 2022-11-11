@@ -4,6 +4,5 @@
 /backend/.idea
 /backend/CMakeLists.txt
 /backend/cmake-build-debug
-/.idea
-/backend/.idea
 /backend/stxxl
+/backend/cmake-build-debug-wsl
