@@ -46,6 +46,14 @@ vector<string> Preprocessing::getStopwords() {
     return stopwords;
 }
 
+/*
+ * lessico : termine, df, cf, vector<int> posizione blocchi
+ * docinfo : dociid, len_doc
+ * posting list : doc_id, tf
+ *
+ * hash term -> vector<posting> (memory mapping)
+ */
+
 vector<string> Preprocessing::removeWordstop(vector<string> words) {
     //  get stopwords list
     //cout << "- start import stopword list ..." << endl;
@@ -78,6 +86,7 @@ vector<string> Preprocessing::removeWordstop(vector<string> words) {
     return words;
 }
 
+//takes id and tokenized words of the doc
 int Preprocessing::build_index(string docid, vector<string> words){
     int weight = 0;
     this->index->addDocIndex(docid,words.size());
@@ -137,7 +146,8 @@ Preprocessing::Preprocessing(string path, Index * index){
     for (string doc; getline(filein, doc); ) 
     {
         words= tokenization(doc);
-        
+
+        //store id and remove it form doc
         string id = words[0];
         words.erase(words.begin());
         //stopword
@@ -151,8 +161,8 @@ Preprocessing::Preprocessing(string path, Index * index){
         //cout<< "Tot MB:  "<< weight/1000<<endl;
 
         c++;
+        if (c%1000==0 ) {
 
-       if (c%1000==0 ) {
            ifstream file_term, file_ii;
            file_term.open("../../data/index/vocabulary.txt");
            file_ii.open("../../data/index/invertindex.txt");
@@ -178,7 +188,7 @@ Preprocessing::Preprocessing(string path, Index * index){
                    ++it;
                    termInfo.df = stoi(it->str());
 
-                   for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
+                   for (auto ii = this->index->getLexicon().begin(); ii != this->index->getLexicon().end(); ++ii) {
                         if(token.compare(ii->first) == 0) //check if the line of vocabulary and token that I have, they are equal
                         {
                            // cout<< "term save: "<<token<<" cf: "<< termInfo.cf<< " df: "<< termInfo.df<<endl;
@@ -220,7 +230,7 @@ Preprocessing::Preprocessing(string path, Index * index){
            else {
                ofstream term("../../data/index/vocabulary.txt");
                ofstream invertindex("../../data/index/invertindex.txt");
-               for (auto ii = this->index->lexicon.begin(); ii != this->index->lexicon.end(); ++ii) {
+               for (auto ii = this->index->getLexicon().begin(); ii != this->index->getLexicon().end(); ++ii) {
                    term << ii->first << "," << ii->second.cf << "," << ii->second.df << endl;//term,cf,df
                //    cout << ii->first << "," << ii->second.cf << "," << ii->second.df << endl;
                    for (int i = 0; i < (*ii->second.posting_list).size(); i++) {
@@ -233,11 +243,11 @@ Preprocessing::Preprocessing(string path, Index * index){
                term.close();
                invertindex.close();
            }
-//cout<<"peso effettivo:"  <<weight<<endl;
+        //cout<<"peso effettivo:"  <<weight<<endl;
             cout<<"indice caricato: "<< c*100/8841822 <<"%"<<endl;
         }
 
-        
+
     }
         filein.close();
 

@@ -1,14 +1,18 @@
 #include <iostream>
 #include "FileManager.h"
 
-FileManager::FileManager(string path) {
+FileManager::FileManager(string path,bool write) {
     path = path;
-    file.open(path, fstream::in);
+    write = write;
+    if(write)
+        outFile.open(path, fstream::out);
+    else
+        inFile.open(path, fstream::in);
 }
 
 vector<string> FileManager::readFile() {
     vector<string> buffer;
-    for (string line; getline(file, line);) {
+    for (string line; getline(inFile, line);) {
         buffer.push_back(line);
     }
     return buffer;
@@ -16,9 +20,12 @@ vector<string> FileManager::readFile() {
 
 string FileManager::readLine() {
     string line = "";
-    return (getline(file, line)) ? line : "";
+    return (getline(inFile, line)) ? line : "";
 }
 
 FileManager::~FileManager() {
-    file.close();
+    if(write)
+        outFile.close();
+    else
+        inFile.close();
 }
