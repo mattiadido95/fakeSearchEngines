@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <stxxl>
 
 using namespace std;
 
@@ -21,7 +22,6 @@ struct term_info {
 
 class Index {
 private:
-
 
 public:
     map<string, term_info> lexicon;
