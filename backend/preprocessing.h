@@ -12,11 +12,11 @@ class Preprocessing {
 private:
 
     Index *index;// map<string, map<string,int>> index;
-    vector<string> tokenization(string);
-    vector<string> getStopwords();
-    vector<string> removeWordstop(vector<string>);// stopwords
-    vector<string> porterStemming(vector<string>);// stemming
-    int build_index(string, vector<string>);// remove duplicate
+    std::vector<string> tokenization(string);
+    std::vector<string> getStopwords();
+    std::vector<string> removeWordstop(std::vector<string>);// stopwords
+    std::vector<string> porterStemming(std::vector<string>);// stemming
+    int build_index(string, std::vector<string>);// remove duplicate
 
 public:
     Preprocessing(string, Index *);

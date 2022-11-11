@@ -13,7 +13,7 @@ void Index::addDocIndex(string docid, int len){
 int Index::addLexicon(string docid, string token){
     term_info termInfo;
     post Post;
-    vector<post> sad;
+    std::vector<post> sad;
 
     if (lexicon.count(token)>0){ //if lexicon already contains that token
         auto it = this->lexicon.find(token);

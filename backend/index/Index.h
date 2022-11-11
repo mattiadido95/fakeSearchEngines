@@ -1,9 +1,10 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <stxxl>
+#include <stxxl.h>
 
 using namespace std;
+
 
 #ifndef BACKEND_INDEX_H
 #define BACKEND_INDEX_H
@@ -17,16 +18,16 @@ struct term_info {
     int cf; //total number of occurrence
     int start_ind;
     int end_ind;
-    vector<int> prova;
-    vector <post> *posting_list;
+    std::vector<int> prova;
+    std::vector <post> *posting_list;
 };
 
 class Index {
 
 private:
-    map <string, term_info> lexicon;
-    map<string, int> documentIndex;
-    stxxl::vector<int> prova;
+    std::map <string, term_info> lexicon;
+    std::map<string, int> documentIndex;
+    stxxl::vector<int> stxxl_vector;
 public:
     void addDocIndex(string, int);
 
@@ -38,9 +39,9 @@ public:
     void next(); //sposta in sequenza l'iteratore al successivo
     void nextGEQ(string); //sposta l'iteratore al successivo con id del posting >=
 
-    map <string, term_info> getLexicon() { return lexicon; }
+    std::map <string, term_info> getLexicon() { return lexicon; }
 
-    map<string, int> getDocumentIndex() { return documentIndex; }
+    std::map<string, int> getDocumentIndex() { return documentIndex; }
 
 };
 
