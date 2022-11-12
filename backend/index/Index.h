@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <stxxl>
+#include <stxxl.h>
 
 using namespace std;
 
