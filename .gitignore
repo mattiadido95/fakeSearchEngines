@@ -2,7 +2,6 @@
 /frontend/node_modules
 .DS_Store
 /backend/.idea
-/backend/CMakeLists.txt
 /backend/cmake-build-debug
 /backend/stxxl
 /backend/cmake-build-debug-wsl
