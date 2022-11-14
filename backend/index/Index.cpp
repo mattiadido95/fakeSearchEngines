@@ -2,11 +2,23 @@
 #include "Index.h"
 #include <string>
 #include <iostream>
+#include <stxxl.h>
+#include <map>
+#define DATA_NODE_BLOCK_SIZE (4096)
+#define DATA_LEAF_BLOCK_SIZE (4096)
 using namespace std;
+//! [comparator]
 
+//! [comparator]
 //add id and length of the doc to the doc structure
+Index::Index(){
+    this->documentIndex = new documentIndex_map((documentIndex_map::node_block_type::raw_size)*3, (documentIndex_map::leaf_block_type::raw_size)*3);
+    this->lexicon = new lexicon_map((lexicon_map::node_block_type::raw_size)*3, (lexicon_map::leaf_block_type::raw_size)*3);
+}
 void Index::addDocIndex(string docid, int len){
-    documentIndex.insert(pair<string,int>(docid,len));
+    // Constructor map(node_cache_size_in_bytes, leaf_cache_size_in_bytes)
+    this->documentIndex->insert(pair<string,int>(docid,len));
+
 }
 
 //add token to the lexicon and create posting list
@@ -14,9 +26,8 @@ int Index::addLexicon(string docid, string token){
     term_info termInfo;
     post Post;
     vector<post> sad;
-
-    if (lexicon.count(token)>0){ //if lexicon already contains that token
-        auto it = this->lexicon.find(token);
+    if (lexicon->count(token)>0){ //if lexicon already contains that token
+        auto it = lexicon->find(token);
         termInfo = it->second;
         //update collection frequency for that token
         it->second.cf++;
@@ -51,7 +62,8 @@ int Index::addLexicon(string docid, string token){
     //crete vector of posting list
     termInfo.posting_list = new vector<post>();
     (*termInfo.posting_list).push_back(Post);
+    lexicon_map ::iterator iter = lexicon->begin();
 
-    lexicon.insert(pair<string,term_info>(token,termInfo));
+    lexicon->insert(iter,pair<std::string,ios::term_info>(token,termInfo));
     return sizeof(termInfo)+sizeof((*termInfo.posting_list));
 }

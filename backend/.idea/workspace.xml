@@ -49,8 +49,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255338c7-53ba-4b27-be00-fe2302ad697a" name="Changes" comment="">
+    <list default="true" id="6ff384c0-35da-4278-9e34-f0badc7e075a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,11 +132,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.backend">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="backend" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -338,7 +336,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="255338c7-53ba-4b27-be00-fe2302ad697a" name="Changes" comment="" />
+      <changelist id="6ff384c0-35da-4278-9e34-f0badc7e075a" name="Changes" comment="" />
       <created>1668158541622</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -350,6 +348,7 @@
       <workItem from="1668186964203" duration="2315000" />
       <workItem from="1668194659175" duration="5521000" />
       <workItem from="1668248502366" duration="984000" />
+      <workItem from="1668443942565" duration="3468000" />
     </task>
     <servers />
   </component>
