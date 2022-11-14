@@ -7,9 +7,11 @@ using namespace std;
 class FileManager{
     private:
         string path;
-        ifstream file;
+        ifstream inFile;
+        ofstream outFile;
+        bool write;
     public:
-        FileManager(string path);
+        FileManager(string,bool);
         vector<string> readFile();
         string readLine();
         ~FileManager();

@@ -5,6 +5,7 @@
 #include<map>
 #include "utility/utility.h"
 #include "index/Index.h"
+
 using namespace std;
 
 class Preprocessing{
