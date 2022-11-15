@@ -16,7 +16,7 @@ private:
     std::vector<string> getStopwords();
     std::vector<string> removeWordstop(std::vector<string>);// stopwords
     std::vector<string> porterStemming(std::vector<string>);// stemming
-    int build_index(string, std::vector<string>);// remove duplicate
+    int build_index(int, std::vector<string>);// remove duplicate
 
 public:
     Preprocessing(string, Index *);
