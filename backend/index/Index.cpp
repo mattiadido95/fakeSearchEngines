@@ -13,7 +13,7 @@ using namespace std;
 //add id and length of the doc to the doc structure
 Index::Index(){
     this->documentIndex = new documentIndex_map((documentIndex_map::node_block_type::raw_size)*3, (documentIndex_map::leaf_block_type::raw_size)*3);
-    this->lexicon = new lexicon_map((lexicon_map::node_block_type::raw_size)*3, (lexicon_map::leaf_block_type::raw_size)*3);
+    this->lexicon = new lexicon_map((lexicon_map::node_block_type::raw_size)*5, (lexicon_map::leaf_block_type::raw_size)*5);
 }
 void Index::addDocIndex(string docid, int len){
     // Constructor map(node_cache_size_in_bytes, leaf_cache_size_in_bytes)
@@ -28,9 +28,9 @@ int Index::addLexicon(string docid, string token){
     vector<post> sad;
     if (lexicon->count(token)>0){ //if lexicon already contains that token
         auto it = lexicon->find(token);
-        termInfo = it->second;
+        termInfo = *it->second;
         //update collection frequency for that token
-        it->second.cf++;
+        (*it->second).cf++;
 
         //search for the post related to that doc
         for(int i = 0; i< (*termInfo.posting_list).size(); i++){
@@ -45,7 +45,7 @@ int Index::addLexicon(string docid, string token){
         Post.tf = 1;
 
         //increment df each time I increment the posting list
-        it->second.df++;
+        (*it->second).df++;
         (*termInfo.posting_list).push_back(Post);
         return sizeof(Post);
 
@@ -62,8 +62,10 @@ int Index::addLexicon(string docid, string token){
     //crete vector of posting list
     termInfo.posting_list = new vector<post>();
     (*termInfo.posting_list).push_back(Post);
-    lexicon_map ::iterator iter = lexicon->begin();
 
-    lexicon->insert(iter,pair<std::string,ios::term_info>(token,termInfo));
+    map<string ,term_info> ciao;
+    ciao.insert(pair<std::string,term_info>(token,termInfo));
+
+    lexicon->insert(pair<std::string,term_info*>(token,(&termInfo)));
     return sizeof(termInfo)+sizeof((*termInfo.posting_list));
 }

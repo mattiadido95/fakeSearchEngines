@@ -17,11 +17,10 @@ struct post {
 struct term_info {
     int df; //number of doc that maintain this term
     int cf; //total number of occurrence
-    int start_ind;
-    int end_ind;
-    vector<post> *posting_list;
+    int pos;
+
 };
-struct CompareGreater
+struct CompareGreaterString
 {
     bool operator () (const std::string& a, const std::string& b) const {
         return a > b;
@@ -30,14 +29,33 @@ struct CompareGreater
         return std::string(MAX_KEY_LEN, std::numeric_limits<unsigned char>::max());
     }
 };
+struct CompareGreaterInt
+{
+    bool operator () (const int & a, const int & b) const
+    { return a > b; }
+    static int max_value()
+    { return std::numeric_limits<int>::min(); }
+};
 
 class Index {
 private:
-    typedef stxxl::map<string, term_info,CompareGreater,DATA_NODE_BLOCK_SIZE,DATA_LEAF_BLOCK_SIZE> lexicon_map;
-    typedef stxxl::map<string, int, CompareGreater, DATA_NODE_BLOCK_SIZE,DATA_LEAF_BLOCK_SIZE> documentIndex_map;
+    //  mappiamo per ogni docid il document length
+    typedef stxxl::map<int, int, CompareGreaterInt, DATA_NODE_BLOCK_SIZE,DATA_LEAF_BLOCK_SIZE> documentIndex_map;
+    /**
+     * per ogni termine mappiamo un indice corrispondente alla posizione nel vettore di tipo lexicon_info_vector che conterrà le strutturo term info
+     */
+    typedef stxxl::map<string,int,CompareGreaterString,DATA_NODE_BLOCK_SIZE,DATA_LEAF_BLOCK_SIZE> lexicon_map;
+    typedef stxxl::vector<term_info> lexicon_info_vector;
+    /**
+     * il vettore di tipo lexicon_info_vector contiene pure la posizione della posting list del termine
+     */
+    typedef stxxl::vector<vector<int>>docid_vector;
+    typedef stxxl::vector<vector<int>>tf_vector;
+
+
     lexicon_map * lexicon;
     documentIndex_map * documentIndex;
-    typedef stxxl::vector<vector<int>> id_post;
+
     typedef stxxl::vector<vector<int>> tf_post;
 
 
