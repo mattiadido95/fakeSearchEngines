@@ -21,8 +21,9 @@ int main() {
 //    cout<<Memory<<endl;
 
     auto start = chrono::steady_clock::now();
-    Index *i = new Index();
-    Preprocessing p("../../data/collection.tsv", i);
+    Index *index = new Index;
+
+    Preprocessing p("../../data/collection.tsv", index);
 //    Memory = getTotalSystemMemory();
 //    cout<<"Finisch memory:  "<<Memory<<endl;
     auto end = chrono::steady_clock::now();

@@ -8,23 +8,16 @@
 
 using namespace std;
 
-class Preprocessing{
-    private:
-   // map<string, map<string,int>> index;
-    Index* index;
-    vector<string> tokenization(string);
-    vector<string> getStopwords();
+class Preprocessing {
+private:
 
-    // stopwords();
-    vector<string> removeWordstop(vector<string>);
-    // stemming();
-    vector<string> porterStemming(vector<string>);
-    // remove duplicate
-    int build_index( string,vector<string>);
+    Index *index;// map<string, map<string,int>> index;
+    std::vector<string> tokenization(string);
+    std::vector<string> getStopwords();
+    std::vector<string> removeWordstop(std::vector<string>);// stopwords
+    std::vector<string> porterStemming(std::vector<string>);// stemming
+    int build_index(int, std::vector<string>);// remove duplicate
 
-    public:
-    Preprocessing(string,Index*);
-
-
-
+public:
+    Preprocessing(string, Index *);
 };

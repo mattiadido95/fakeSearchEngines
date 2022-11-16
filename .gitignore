@@ -5,3 +5,5 @@
 /backend/cmake-build-debug
 /backend/stxxl
 /backend/cmake-build-debug-wsl
+/backend/disk
+

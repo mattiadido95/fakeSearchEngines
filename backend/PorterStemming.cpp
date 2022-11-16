@@ -275,7 +275,7 @@ void step2(char a[], int j) {
                 if (ends(a, "ational", 7, k)) {
                     k -= 7;
                     parameter = 1;
-                  //  cout << "The value is " << " " << k;
+                    //  cout << "The value is " << " " << k;
                     setto(3, "ate", a);
                     break;
                 }
@@ -650,7 +650,7 @@ int stem(char a[], int i, int j) {
 vector<string> Preprocessing::porterStemming(
         vector<string> tokens) { /*main and stemfile function.----------------------------------------------*/
     vector<string> word_stem;
-   // cout << tokens.size() << endl;
+    // cout << tokens.size() << endl;
     for (int i = 0; i < tokens.size(); i++) {
         char word[tokens[i].length() + 1];
         strcpy(word, tokens[i].c_str());
