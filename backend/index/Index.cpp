@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stxxl.h>
 #include <map>
+#include "utility/Print.h"
 
 #define DATA_NODE_BLOCK_SIZE (4096)
 #define DATA_LEAF_BLOCK_SIZE (4096)
@@ -31,10 +32,9 @@ void Index::addLexicon(int docid, string token) {
     term_info termInfo;
     post Post;
     vector<post> sad;
+    Print print;
 
-    cout << "token -> " << token << endl;
-    
-    if (lexicon->find(token) != lexicon->end()) {
+    if (!lexicon->empty() && lexicon->find(token) != lexicon->end()) {
         // term is already into lexicon
         return;
     } else {
@@ -42,6 +42,7 @@ void Index::addLexicon(int docid, string token) {
         // -> add into lexicon map new term with the positional index of the vector lexiconInfo
         // -> create term info struct with cf df and index to tf_vector and docID_vector
         // -> add the new doc id and the new tf into tf_vector and docID_vector
+        print.mapString(this->lexicon);
 
         vector<int> docid_new;
         docid_new.push_back(docid);
@@ -57,7 +58,7 @@ void Index::addLexicon(int docid, string token) {
 
         this->lexiconInfo->push_back(termInfo);
 
-        this->lexicon->insert(pair<string, int>(token, this->terms_counter));
+        this->lexicon->insert(std::pair<string, int>(token, this->terms_counter));
 
         cout << this->terms_counter<<endl;
 
