@@ -56,7 +56,6 @@ private:
     lexicon_map * lexicon;
     documentIndex_map * documentIndex;
 
-    typedef stxxl::vector<vector<int>> tf_post;
 
 
 public:
