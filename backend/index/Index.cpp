@@ -62,6 +62,8 @@ void Index::addLexicon(int docid, string token) {
 
         cout << this->terms_counter<<endl;
 
+        print.mapString(this->lexicon);
+
         this->terms_counter++;
 
     }

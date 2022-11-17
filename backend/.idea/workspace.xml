@@ -49,15 +49,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba519b3d-a9ec-4c15-af7a-64e30bb7843f" name="Changes" comment="">
+    <list default="true" id="6ff384c0-35da-4278-9e34-f0badc7e075a" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/utility/Print.cpp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/utility/Print.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utility/availableMemory.h" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/utility/definition.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PorterStemming.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/PorterStemming.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing.h" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/utilityold.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +76,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/stxxl" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -98,6 +104,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.backend">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="backend" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
