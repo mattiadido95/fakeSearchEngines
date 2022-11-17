@@ -30,13 +30,11 @@ struct term_info {
 
 struct CompareGreaterString {
     bool operator()(const std::string &a, const std::string &b) const {
-        if(a.compare(b) > 0)
-            return 1;
-        return 0;
+        return a > b;
     }
 
     static std::string max_value() {
-        return std::string(MAX_KEY_LEN, std::numeric_limits<unsigned char>::max());
+        return std::string(1, '0');
     }
 };
 

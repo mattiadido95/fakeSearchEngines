@@ -161,9 +161,11 @@ Preprocessing::Preprocessing(string path, Index *index) {
         //cout<< "Tot MB:  "<< weight/1000<<endl;
 
         c++;
-        if (c == 1000) {
+        cout << c << endl;
+        if (c % 605 == 0) {
 
-            break;
+            if(c == 1000)
+                break;
 
 //            ifstream file_term, file_ii;
 //            file_term.open("../../data/index/vocabulary.txt");

@@ -31,10 +31,11 @@ void Index::addDocIndex(int docid, int len) {
 void Index::addLexicon(int docid, string token) {
     term_info termInfo;
     post Post;
-    vector<post> sad;
     Print print;
 
-    if (!lexicon->empty() && lexicon->find(token) != lexicon->end()) {
+    cout << "TOKE :" << token << endl;
+
+    if (lexicon->find(token) != lexicon->end()) {
         // term is already into lexicon
         return;
     } else {
@@ -42,7 +43,6 @@ void Index::addLexicon(int docid, string token) {
         // -> add into lexicon map new term with the positional index of the vector lexiconInfo
         // -> create term info struct with cf df and index to tf_vector and docID_vector
         // -> add the new doc id and the new tf into tf_vector and docID_vector
-        print.mapString(this->lexicon);
 
         vector<int> docid_new;
         docid_new.push_back(docid);
@@ -56,11 +56,10 @@ void Index::addLexicon(int docid, string token) {
         termInfo.df = 1;
         termInfo.pos = this->terms_counter;
 
+
         this->lexiconInfo->push_back(termInfo);
 
         this->lexicon->insert(std::pair<string, int>(token, this->terms_counter));
-
-        cout << this->terms_counter<<endl;
 
         this->terms_counter++;
 

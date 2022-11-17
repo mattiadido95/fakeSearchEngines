@@ -23,17 +23,13 @@ private:
 
 public:
     void addDocIndex(int, int);
-
     void addLexicon(int, string);
-
     Index();
 
     void add_document_index(string, int);
-
     string docid(); //restituisce il docid del post corrente
     void next(); //sposta in sequenza l'iteratore al successivo
     void nextGEQ(string); //sposta l'iteratore al successivo con id del posting >=
-
 
 };
 
