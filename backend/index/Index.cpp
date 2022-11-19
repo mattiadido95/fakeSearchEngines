@@ -6,13 +6,11 @@
 #include <map>
 #include "utility/Print.h"
 
-#define DATA_NODE_BLOCK_SIZE (4096)
-#define DATA_LEAF_BLOCK_SIZE (4096)
 using namespace std;
-
 
 //add id and length of the doc to the doc structure
 Index::Index() {
+    cout << "ciao sono il costruttore" << endl;
     this->documentIndex = new documentIndex_map((documentIndex_map::node_block_type::raw_size) * 3,
                                                 (documentIndex_map::leaf_block_type::raw_size) * 3);
     this->lexicon = new lexicon_map((lexicon_map::node_block_type::raw_size) * 5,
@@ -21,6 +19,18 @@ Index::Index() {
     this->docID = new docID_vector;
     this->tf = new tf_vector;
 }
+
+Index::Index(const Index& c){
+    cout << "ciao sono il costruttore di copia" << endl;
+}
+
+//takes id and tokenized words of the doc
+void Index::builtIndex(int docid, vector<string> words) {
+    addDocIndex(docid, words.size());
+    for (int i = 0; i < words.size(); i++)
+        addLexicon(docid,words[i]);
+}
+
 
 void Index::addDocIndex(int docid, int len) {
     // Constructor map(node_cache_size_in_bytes, leaf_cache_size_in_bytes)
@@ -33,7 +43,12 @@ void Index::addLexicon(int docid, string token) {
     post Post;
     Print print;
 
-    cout << "TOKE :" << token << endl;
+    if (docid == 1927 || docid == 2099){
+        cout << token << " ";
+        return;
+    }
+
+//    cout << "TOKEN :" << token << endl;
 
     if (lexicon->find(token) != lexicon->end()) {
         // term is already into lexicon

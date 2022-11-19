@@ -38,6 +38,8 @@ add_executable(backend
         PorterStemming.cpp
         utility/utility.cpp
         utility/utility.h
+        utility/FileManager.cpp
+        utility/FileManager.h
         index/Index.cpp
         index/Index.h utility/Print.h utility/Print.cpp utility/definition.h utility/definition.h)
 

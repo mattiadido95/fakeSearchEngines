@@ -14,5 +14,6 @@ class FileManager{
         FileManager(string,bool);
         vector<string> readFile();
         string readLine();
+        void writeLine(int, vector<string>);
         ~FileManager();
 };

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "FileManager.h"
 
-FileManager::FileManager(string path,bool write) {
+FileManager::FileManager(string path, bool write) {
     path = path;
     write = write;
     if(write)
@@ -21,6 +21,14 @@ vector<string> FileManager::readFile() {
 string FileManager::readLine() {
     string line = "";
     return (getline(inFile, line)) ? line : "";
+}
+
+void FileManager::writeLine(int docId, vector<string> s){
+    string result = to_string(docId) + "\t";
+    for(int i = 0; i < s.size(); i++){
+        result += s[i] + " ";
+    }
+    outFile << result << endl;
 }
 
 FileManager::~FileManager() {

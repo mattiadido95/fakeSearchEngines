@@ -22,10 +22,12 @@ private:
     int terms_counter = 0;
 
 public:
+    Index();
+    Index(const Index&);
+
+    void builtIndex(int,vector<string>);
     void addDocIndex(int, int);
     void addLexicon(int, string);
-    Index();
-
     void add_document_index(string, int);
     string docid(); //restituisce il docid del post corrente
     void next(); //sposta in sequenza l'iteratore al successivo

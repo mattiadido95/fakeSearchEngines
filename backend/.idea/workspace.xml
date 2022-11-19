@@ -51,11 +51,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ba519b3d-a9ec-4c15-af7a-64e30bb7843f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.stxxl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing.h" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfile_output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/FileManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/definition.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/definition.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,6 +101,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.backend">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="backend" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -315,6 +324,11 @@
       <workItem from="1668701574272" duration="22000" />
       <workItem from="1668701611605" duration="411000" />
       <workItem from="1668702042957" duration="4000" />
+      <workItem from="1668758697187" duration="5660000" />
+      <workItem from="1668771925531" duration="4155000" />
+      <workItem from="1668778460658" duration="1674000" />
+      <workItem from="1668789785360" duration="909000" />
+      <workItem from="1668872371271" duration="3283000" />
     </task>
     <servers />
   </component>
@@ -335,11 +349,9 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/preprocessing.cpp</url>
-          <line>166</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
+        <breakpoint type="CidrExceptionBreakpoint">
+          <option name="timeStamp" value="6" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

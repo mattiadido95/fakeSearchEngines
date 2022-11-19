@@ -5,19 +5,19 @@
 #include<map>
 #include "utility/utility.h"
 #include "index/Index.h"
+#include "utility/FileManager.h"
 
 using namespace std;
 
 class Preprocessing {
 private:
-
-    Index *index;// map<string, map<string,int>> index;
+    utility util;
+    FileManager* docsFile;
+    FileManager* stopwordsFile;
+    FileManager* outputFile;
     std::vector<string> tokenization(string);
-    std::vector<string> getStopwords();
-    std::vector<string> removeWordstop(std::vector<string>);// stopwords
+    std::vector<string> removeStopword(std::vector<string>);// stopwords
     std::vector<string> porterStemming(std::vector<string>);// stemming
-    int build_index(int, std::vector<string>);// remove duplicate
-
 public:
-    Preprocessing(string, Index *);
+    Preprocessing(string);
 };
