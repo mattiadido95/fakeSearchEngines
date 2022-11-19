@@ -39,7 +39,7 @@ add_executable(backend
         utility/utility.cpp
         utility/utility.h
         index/Index.cpp
-        index/Index.h)
+        index/Index.h utility/Print.h utility/Print.cpp utility/definition.h utility/definition.h)
 
 target_link_libraries(backend ${STXXL_LIBRARIES})
 
