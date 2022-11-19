@@ -24,7 +24,7 @@ string FileManager::readLine() {
 }
 
 void FileManager::writeLine(int docId, vector<string> s){
-    string result = to_string(docId) + "\t";
+    string result = to_string(docId) + " ";
     for(int i = 0; i < s.size(); i++){
         result += s[i] + " ";
     }

@@ -3,10 +3,9 @@
 #include<string>
 #include<vector>
 #include<map>
+#include <regex>
 #include "utility/utility.h"
-#include "index/Index.h"
 #include "utility/FileManager.h"
-
 using namespace std;
 
 class Preprocessing {

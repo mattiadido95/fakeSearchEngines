@@ -2,8 +2,10 @@
 #include <vector>
 #include <map>
 #include <stxxl.h>
+#include "utility/utility.h"
 #include "utility/definition.h"
 #include "utility/Print.h"
+#include "utility/FileManager.h"
 
 #ifndef BACKEND_INDEX_H
 #define BACKEND_INDEX_H
@@ -12,6 +14,9 @@ using namespace std;
 
 class Index {
 private:
+    utility util;
+
+    FileManager *pDoc;
     lexicon_map *lexicon;
     documentIndex_map *documentIndex;
 
@@ -22,10 +27,10 @@ private:
     int terms_counter = 0;
 
 public:
-    Index();
+    Index(string);
     Index(const Index&);
 
-    void builtIndex(int,vector<string>);
+    void builtIndex();
     void addDocIndex(int, int);
     void addLexicon(int, string);
     void add_document_index(string, int);

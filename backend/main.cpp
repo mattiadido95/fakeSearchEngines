@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <regex>
+
 #include <algorithm> //serve per lower o upper
 #include "preprocessing.h"
 #include "utility/availableMemory.cpp"
@@ -30,6 +30,8 @@ int main() {
 //         << " sec";
 
     Preprocessing p("../../data/collection.tsv");
+    Index i("../../data/preprocecedcollection.txt");
+    i.builtIndex();
     return 0;
 
 

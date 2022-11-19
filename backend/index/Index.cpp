@@ -9,8 +9,10 @@
 using namespace std;
 
 //add id and length of the doc to the doc structure
-Index::Index() {
+Index::Index(string path) {
     cout << "ciao sono il costruttore" << endl;
+
+    this->pDoc = new FileManager(path,false);
     this->documentIndex = new documentIndex_map((documentIndex_map::node_block_type::raw_size) * 3,
                                                 (documentIndex_map::leaf_block_type::raw_size) * 3);
     this->lexicon = new lexicon_map((lexicon_map::node_block_type::raw_size) * 5,
@@ -25,10 +27,24 @@ Index::Index(const Index& c){
 }
 
 //takes id and tokenized words of the doc
-void Index::builtIndex(int docid, vector<string> words) {
-    addDocIndex(docid, words.size());
-    for (int i = 0; i < words.size(); i++)
-        addLexicon(docid,words[i]);
+void Index::builtIndex() {
+    string doc = pDoc->readLine();
+    int docid;
+    vector<string> words;
+
+    while (doc != "") {
+        words = util.split(doc," ");
+
+        //get docid
+        docid = stoi(words[0]);
+        words.erase(words.begin());
+
+        addDocIndex(docid, words.size());
+        for (int i = 0; i < words.size(); i++)
+            addLexicon(docid, words[i]);
+
+        doc = pDoc->readLine();
+    }
 }
 
 
@@ -42,17 +58,24 @@ void Index::addLexicon(int docid, string token) {
     term_info termInfo;
     post Post;
     Print print;
-
-    if (docid == 1927 || docid == 2099){
-        cout << token << " ";
-        return;
-    }
-
-//    cout << "TOKEN :" << token << endl;
-
-    if (lexicon->find(token) != lexicon->end()) {
-        // term is already into lexicon
-        return;
+    lexicon_map::const_iterator lex = lexicon->find(token);
+    if (lex != lexicon->end()) {
+        //get the position of the posting list of the token
+        int pos = lex->second;
+        //check if the doc have aleady this token
+        //vector<int> doclist = (*docID)[pos];
+        vector<int>::iterator it;
+        it = find ((*docID)[pos].begin(), (*docID)[pos].end(), docid);
+        if (it != (*docID)[pos].end()){
+            int index = it - (*docID)[pos].begin();
+            (*tf)[pos][index]++;
+            (*lexiconInfo)[pos].df++;
+        }else{
+            (*docID)[pos].push_back(docid);
+            (*tf)[pos].push_back(1);
+            (*lexiconInfo)[pos].cf++;
+            (*lexiconInfo)[pos].df++;
+        }
     } else {
         // term not in lexicon
         // -> add into lexicon map new term with the positional index of the vector lexiconInfo
@@ -75,6 +98,10 @@ void Index::addLexicon(int docid, string token) {
         this->lexiconInfo->push_back(termInfo);
 
         this->lexicon->insert(std::pair<string, int>(token, this->terms_counter));
+
+        cout << this->terms_counter<<endl;
+
+
 
         this->terms_counter++;
 

@@ -1,13 +1,8 @@
 #include "preprocessing.h"
 #include <string>
-#include <iostream>
-#include <fstream>
 #include <vector>
 #include <regex>
 #include <algorithm> //serve per lower o upper
-#include <map>
-#include "utility/utility.h"
-#include "index/Index.h"
 
 using namespace std;
 
