@@ -45,3 +45,14 @@ int utility::binary_search(vector<string> stopwords, string token, int size) {
     return -1;
 }
 
+vector<string> utility::split(string doc,string delimiter){
+    size_t pos = 0;
+    vector<string> result;
+    while ((pos = doc.find(delimiter)) != std::string::npos) {
+        result.push_back(doc.substr(0, pos));
+        doc.erase(0, pos + delimiter.length());
+    }
+    return result;
+}
+
+

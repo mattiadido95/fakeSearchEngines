@@ -36,10 +36,16 @@ add_executable(backend
         preprocessing.cpp
         preprocessing.h
         PorterStemming.cpp
+        index/Index.cpp
+        index/Index.h
         utility/utility.cpp
         utility/utility.h
-        index/Index.cpp
-        index/Index.h utility/Print.h utility/Print.cpp utility/definition.h utility/definition.h)
+        utility/FileManager.cpp
+        utility/FileManager.h
+        utility/Print.h
+        utility/Print.cpp
+        utility/definition.h
+        utility/definition.h)
 
 target_link_libraries(backend ${STXXL_LIBRARIES})
 

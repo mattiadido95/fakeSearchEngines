@@ -1,3 +1,6 @@
+#ifndef BACKEND_FILEMANAGER_H
+#define BACKEND_FILEMANAGER_H
+
 #include<fstream>
 #include<string>
 #include<vector>
@@ -14,5 +17,8 @@ class FileManager{
         FileManager(string,bool);
         vector<string> readFile();
         string readLine();
+        void writeLine(int, vector<string>);
         ~FileManager();
 };
+
+#endif //BACKEND_UTILITY_H

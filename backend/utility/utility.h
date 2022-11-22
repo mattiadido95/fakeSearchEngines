@@ -18,6 +18,8 @@ public:
     string *vector_to_array(vector<string> token_list);
 
     int binary_search(vector<string> stopwords, string token, int size);
+
+    vector<string> split(string,string);
 };
 
 #endif //BACKEND_UTILITY_H

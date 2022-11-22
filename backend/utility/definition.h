@@ -11,10 +11,11 @@
 
 using namespace std;
 
-#define DATA_NODE_BLOCK_SIZE (4096)
-#define DATA_LEAF_BLOCK_SIZE (4096)
+#define DATA_NODE_BLOCK_SIZE 4096
+#define DATA_LEAF_BLOCK_SIZE 4096
 
 static const int MAX_KEY_LEN = 16;
+static const int MIN_KEY_LEN = 1;
 
 struct post {
     string id;
@@ -30,19 +31,22 @@ struct term_info {
 
 struct CompareGreaterString {
     bool operator()(const std::string &a, const std::string &b) const {
-        if(a.compare(b) > 0)
-            return 1;
-        return 0;
+        return a > b;
     }
 
     static std::string max_value() {
-        return std::string(1, 0);
+        return std::string(MIN_KEY_LEN, '0');
+    }
+
+    static std::string min_value() {
+        return std::string(MAX_KEY_LEN, 'z');
     }
 };
 
 struct CompareGreaterInt {
     bool operator()(const int &a, const int &b) const { return a > b; }
 
+    static int min_value() { return std::numeric_limits<int>::max(); }
     static int max_value() { return std::numeric_limits<int>::min(); }
 };
 

@@ -1,1 +1,6 @@
-disk=./disk,2G,syscall direct autogrow
+disk=./disk0,2G,syscall unlink
+disk=./disk1,2G,syscall unlink
+disk=./disk2,2G,syscall unlink
+disk=./disk3,2G,syscall unlink
+disk=./disk4,2G,syscall unlink
+disk=./disk5,2G,syscall unlink
