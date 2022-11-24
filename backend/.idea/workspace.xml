@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
 }</component>
@@ -52,13 +55,8 @@
     <list default="true" id="d7bfd3bd-b224-469f-a1e5-139dfe9a95fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stxxl/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/stxxl/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/FileManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/definition.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/definition.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/utility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -15,7 +15,7 @@ FileManager::FileManager(string path, string mode) {
         if(fstat(fd,&sb) == -1){
             perror("couldn't get file size\n");
         }
-        file_mem = (char*) mmap(NULL,sb.st_size,PROT_READ, MAP_PRIVATE,fd,0);
+        file_mem = (char*) mmap(NULL,sb.st_size,PROT_READ, MAP_SHARED,fd,0);
     }else
         perror("Error in FileManager constructor\n");
 }
