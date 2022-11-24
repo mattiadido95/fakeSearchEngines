@@ -51,19 +51,6 @@
   <component name="ChangeListManager">
     <list default="true" id="13b57ef6-21b3-4564-b1ae-76c514a122d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.stxxl" beforeDir="false" afterPath="$PROJECT_DIR$/.stxxl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing.h" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testfile_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/FileManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/definition.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/definition.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/utility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
