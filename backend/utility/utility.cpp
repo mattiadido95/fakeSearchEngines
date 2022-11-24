@@ -49,7 +49,8 @@ vector<string> utility::split(string doc,string delimiter){
     size_t pos = 0;
     vector<string> result;
     while ((pos = doc.find(delimiter)) != std::string::npos) {
-        result.push_back(doc.substr(0, pos));
+        string token = doc.substr(0, pos);
+        result.push_back(token);
         doc.erase(0, pos + delimiter.length());
     }
     return result;

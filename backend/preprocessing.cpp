@@ -71,9 +71,9 @@ vector<string> Preprocessing::removeStopword(vector<string> words) {
 
 
 Preprocessing::Preprocessing(string path) {
-    docsFile = new FileManager(path,false);
-    stopwordsFile = new FileManager("../../data/stop_words_english.txt",false);
-    outputFile = new FileManager("../../data/preprocessed_collection.txt",true);
+    docsFile = new FileManager(path,"read");
+    stopwordsFile = new FileManager("../../data/stop_words_english.txt","read");
+    outputFile = new FileManager("../../data/preprocessed_collection.txt","write");
     vector<string> words;
     ifstream filein(path);
     int c = 0;
@@ -96,7 +96,9 @@ Preprocessing::Preprocessing(string path) {
 
         //get next doc
         doc = docsFile->readLine();
-        if(c == 2)
+        if(c % 1000 == 0)
+            cout << c << endl;
+        if(c == 1000)
             break;
     }
 }

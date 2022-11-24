@@ -14,6 +14,9 @@ using namespace std;
 #define DATA_NODE_BLOCK_SIZE 1024
 #define DATA_LEAF_BLOCK_SIZE 1024
 
+#define SUB_BLOCK_SIZE 8192
+#define SUB_BLOCKS_PER_BLOCK 256
+
 static const int MAX_KEY_LEN = 16;
 static const int MIN_KEY_LEN = 1;
 
@@ -50,6 +53,34 @@ struct CompareGreaterInt {
     static int max_value() { return std::numeric_limits<int>::min(); }
 };
 
+//! [hash]
+struct HashFunctor
+{
+    size_t operator () (string s) const
+    {
+        cout << s << endl;
+        string res;
+        for(int i=1; i<s.size();i++){
+            res += to_string((int)s[i]);
+        }
+        cout << res << endl;
+        // a simple integer hash function
+        return (size_t)(stoi(res) * 2654435761u);
+    }
+};
+//! [hash]
+//! [comparator]
+struct CompareLess
+{
+    bool operator () (const string& a, const string& b) const
+    { return a < b; }
+    static string min_value() { return std::string(MIN_KEY_LEN, std::numeric_limits<char>::min()); }
+    static string max_value() { return std::string(MIN_KEY_LEN, std::numeric_limits<char>::max()); }
+};
+//! [comparator]
+
+// template parameter <KeyType, MappedType, HashType, CompareType, SubBlockSize, SubBlocksPerBlock>
+typedef stxxl::unordered_map<string, int, HashFunctor, CompareLess, SUB_BLOCK_SIZE, SUB_BLOCKS_PER_BLOCK> lexicon_umap;
 //  mappiamo per ogni docid il document length
 typedef stxxl::map<int, int, CompareGreaterInt, DATA_NODE_BLOCK_SIZE, DATA_LEAF_BLOCK_SIZE> documentIndex_map;
 /**

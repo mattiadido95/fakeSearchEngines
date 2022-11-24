@@ -15,11 +15,15 @@ using namespace std;
 class Index {
 private:
     utility util;
+    Print print;
 
     FileManager *pDoc;
-    lexicon_map *lexicon;
-    documentIndex_map *documentIndex;
+    FileManager *lexiconRead;
+    FileManager *lexiconWrite;
 
+    lexicon_map *lexicon;
+
+    documentIndex_map *documentIndex;
     lexicon_info_vector *lexiconInfo;
     docID_vector *docID;
     tf_vector *tf;
@@ -27,12 +31,13 @@ private:
     int terms_counter = 0;
 
 public:
-    Index(string);
+    Index(string,string);
     Index(const Index&);
 
     void builtIndex();
     void addDocIndex(int, int);
     void addLexicon(int, string);
+    void addLexiconNew(int, string);
     void add_document_index(string, int);
     string docid(); //restituisce il docid del post corrente
     void next(); //sposta in sequenza l'iteratore al successivo
