@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include <stxxl.h>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ class FileManager{
         string readLine();
         void writeLine(int, vector<string>);
         void writeLine(string);
-        string findPosition(string);
+        string findPosition(string,stxxl::vector<string>&);
         ~FileManager();
 };
 

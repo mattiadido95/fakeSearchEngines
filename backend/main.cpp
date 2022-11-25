@@ -42,6 +42,7 @@ int main() {
 //    Preprocessing p("../../data/collection.tsv");
     Index i("../../data/preprocessed_collection.txt","../../data/lexicon.txt");
     i.builtIndex();
+    cout<<"fine"<<endl;
     return 0;
 
 

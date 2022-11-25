@@ -20,6 +20,8 @@ Index::Index(string collectionPath, string lexiconPath) {
     this->lexiconInfo = new lexicon_info_vector;
     this->docID = new docID_vector;
     this->tf = new tf_vector;
+    this->dictionary = new dictionaryVector;
+    this->pos = new position;
 }
 
 Index::Index(const Index& c){
@@ -46,7 +48,6 @@ void Index::builtIndex() {
 
         doc = pDoc->readLine();
     }
-
 }
 
 
@@ -117,10 +118,10 @@ void Index::addLexiconNew(int docid, string token) {
     term_info termInfo;
     post Post;
     Print print;
-    string position = lexiconRead->findPosition(token);
+    string position = lexiconRead->findPosition(token,*this->dictionary);
     if (position.compare("") != 0) {
         //get the position of the posting list of the token
-        cout << "elemento gia presente " << token << endl;
+       // cout << "elemento gia presente " << token << endl;
         int pos = stoi(position);
         //check if the doc have already this token
         //vector<int> doclist = (*docID)[pos];
@@ -141,7 +142,7 @@ void Index::addLexiconNew(int docid, string token) {
 //         -> add into lexicon map new term with the positional index of the vector lexiconInfo
 //         -> create term info struct with cf df and index to tf_vector and docID_vector
 //         -> add the new doc id and the new tf into tf_vector and docID_vector
-        cout << "elemento non presente " << token << endl;
+     //   cout << "elemento non presente " << token << endl;
 
         vector<int> docid_new;
         docid_new.push_back(docid);
@@ -157,15 +158,20 @@ void Index::addLexiconNew(int docid, string token) {
 
 
         this->lexiconInfo->push_back(termInfo);
-
-        lexiconWrite->writeLine(token + " " + to_string(this->terms_counter));
-        delete(lexiconWrite);
-        lexiconWrite = new FileManager("../../data/lexicon.txt","append");
-
+        this->pos->push_back(this->terms_counter);
+        this->dictionary->push_back(token);
+//        lexiconWrite->writeLine(token + " " + to_string(this->terms_counter));
+//        delete(lexiconWrite);
+//        lexiconWrite = new FileManager("../../data/lexicon.txt","append");
+        if (this->terms_counter % 100 == 0)
+        {
+            for(int i  = 0;i<this->pos->size();i++)
+                cout<< this->dictionary [i]<<" "<<endl;
+        }
         this->terms_counter++;
     }
-    delete(lexiconRead);
-    lexiconRead = new FileManager("../../data/lexicon.txt","memory");
+//    delete(lexiconRead);
+//    lexiconRead = new FileManager("../../data/lexicon.txt","memory");
 
     return;
 }

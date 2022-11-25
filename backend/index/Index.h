@@ -27,7 +27,8 @@ private:
     lexicon_info_vector *lexiconInfo;
     docID_vector *docID;
     tf_vector *tf;
-
+    dictionaryVector *dictionary;
+    position *pos;
     int terms_counter = 0;
 
 public:

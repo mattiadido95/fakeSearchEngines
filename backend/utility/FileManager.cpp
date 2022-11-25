@@ -45,37 +45,22 @@ void FileManager::writeLine(string s){
     outFile << s << endl;
 }
 
-string FileManager::findPosition(string term){
+string FileManager::findPosition(string term,stxxl::vector<string>&dictionary){
     string fetchedTerm = "";
-    string fetchedPos = "";
+    string indexPos = "";
     bool found = false;
     bool termFetched = false;
     //file struct -> term pos\n
-    for(int i = 0; i < sb.st_size; i++){
+    for(int i = 0; i < dictionary.size(); i++){
         //look for term
-        if(file_mem[i] == ' ') {
-            termFetched = true;
-            if(fetchedTerm.compare(term) == 0){
-                found = true;
-            }
-            continue;
+        if(term.compare(dictionary[i])==0) {
+            found = true;
+            indexPos = to_string(i);
         }
-        if(!termFetched){ // term not completely read
-            fetchedTerm += file_mem[i];
-        }else{ // term already read
-            if(file_mem[i] != '\n') {
-                fetchedPos += file_mem[i];
-            }else{
-                if(found){
-                    break;
-                }
-                termFetched = false;
-                fetchedTerm = "";
-                fetchedPos = "";
-            }
-        }
+
+
     }
-    return fetchedPos;
+    return indexPos;
 }
 
 FileManager::~FileManager() {

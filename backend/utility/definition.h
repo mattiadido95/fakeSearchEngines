@@ -11,8 +11,8 @@
 
 using namespace std;
 
-#define DATA_NODE_BLOCK_SIZE 1024
-#define DATA_LEAF_BLOCK_SIZE 1024
+#define DATA_NODE_BLOCK_SIZE 4096
+#define DATA_LEAF_BLOCK_SIZE 4096
 
 #define SUB_BLOCK_SIZE 8192
 #define SUB_BLOCKS_PER_BLOCK 256
@@ -93,5 +93,6 @@ typedef stxxl::vector<term_info> lexicon_info_vector;
  */
 typedef stxxl::vector<vector<int>> docID_vector;
 typedef stxxl::vector<vector<int>> tf_vector;
-
+typedef stxxl::vector<string> dictionaryVector;
+typedef stxxl::vector<int> position;
 #endif //BACKEND_DEFINITION_H

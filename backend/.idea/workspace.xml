@@ -55,8 +55,11 @@
     <list default="true" id="d7bfd3bd-b224-469f-a1e5-139dfe9a95fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stxxl/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/stxxl/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/FileManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/definition.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/definition.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,12 +339,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>158</line>
+          <line>159</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/index/Index.cpp</url>
-          <line>120</line>
+          <line>121</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
