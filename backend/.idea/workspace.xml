@@ -57,9 +57,13 @@
       <change beforePath="$PROJECT_DIR$/index/Index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/Index.h" beforeDir="false" afterPath="$PROJECT_DIR$/index/Index.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stxxl/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/stxxl/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/FileManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/FileManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/FileManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/definition.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/definition.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/utility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/utility/utility.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +244,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="backend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="backend" TARGET_NAME="backend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="backend" RUN_TARGET_NAME="backend">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -344,13 +353,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/index/Index.cpp</url>
-          <line>121</line>
+          <line>52</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/index/Index.cpp</url>
-          <line>13</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

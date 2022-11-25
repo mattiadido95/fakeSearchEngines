@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <stxxl.h>
 
 using namespace std;
 
@@ -19,7 +20,10 @@ public:
 
     int binary_search(vector<string> stopwords, string token, int size);
 
-    vector<string> split(string,string);
+    vector<string> split(string, string);
+
+    int findPosition(string, stxxl::vector<string> &);
+
 };
 
 #endif //BACKEND_UTILITY_H

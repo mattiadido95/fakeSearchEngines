@@ -56,4 +56,16 @@ vector<string> utility::split(string doc,string delimiter){
     return result;
 }
 
+int utility::findPosition(string term, stxxl::vector<string>&dictionary){
+    int indexPos = -1;
+    //file struct -> term pos\n
+    for(int i = 0; i < dictionary.size(); i++){
+        //look for term
+        if(term.compare(dictionary[i])==0) {
+            indexPos = i;
+            break;
+        }
+    }
+    return indexPos;
+}
 

@@ -98,7 +98,7 @@ Preprocessing::Preprocessing(string path) {
         doc = docsFile->readLine();
         if(c % 1000 == 0)
             cout << c << endl;
-        if(c == 1000)
+        if(c == 10000)
             break;
     }
 }

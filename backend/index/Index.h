@@ -6,6 +6,9 @@
 #include "utility/definition.h"
 #include "utility/Print.h"
 #include "utility/FileManager.h"
+#include <iostream>
+#include <algorithm>
+
 
 #ifndef BACKEND_INDEX_H
 #define BACKEND_INDEX_H
@@ -17,18 +20,15 @@ private:
     utility util;
     Print print;
 
-    FileManager *pDoc;
-    FileManager *lexiconRead;
-    FileManager *lexiconWrite;
+    FileManager* pDoc;
+    FileManager* lexiconRead;
+    FileManager* lexiconWrite;
 
-    lexicon_map *lexicon;
-
-    documentIndex_map *documentIndex;
-    lexicon_info_vector *lexiconInfo;
-    docID_vector *docID;
-    tf_vector *tf;
-    dictionaryVector *dictionary;
-    position *pos;
+    dictionaryVector* lexicon;
+    documentIndex_map* documentIndex;
+    lexicon_info_vector* lexiconInfo;
+    docID_vector* docID;
+    tf_vector* tf;
     int terms_counter = 0;
 
 public:
@@ -38,8 +38,8 @@ public:
     void builtIndex();
     void addDocIndex(int, int);
     void addLexicon(int, string);
-    void addLexiconNew(int, string);
-    void add_document_index(string, int);
+    void writeToFile();
+
     string docid(); //restituisce il docid del post corrente
     void next(); //sposta in sequenza l'iteratore al successivo
     void nextGEQ(string); //sposta l'iteratore al successivo con id del posting >=

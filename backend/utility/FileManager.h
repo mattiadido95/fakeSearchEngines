@@ -31,7 +31,6 @@ class FileManager{
         string readLine();
         void writeLine(int, vector<string>);
         void writeLine(string);
-        string findPosition(string,stxxl::vector<string>&);
         ~FileManager();
 };
 

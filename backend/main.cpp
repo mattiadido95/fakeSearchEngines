@@ -39,10 +39,10 @@ int main() {
 //         << chrono::duration_cast<chrono::seconds>(end - start).count()
 //         << " sec";
 
-//    Preprocessing p("../../data/collection.tsv");
+    Preprocessing p("../../data/collection.tsv");
     Index i("../../data/preprocessed_collection.txt","../../data/lexicon.txt");
     i.builtIndex();
-    cout<<"fine"<<endl;
+    i.writeToFile();
     return 0;
 
 

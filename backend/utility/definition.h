@@ -94,5 +94,4 @@ typedef stxxl::vector<term_info> lexicon_info_vector;
 typedef stxxl::vector<vector<int>> docID_vector;
 typedef stxxl::vector<vector<int>> tf_vector;
 typedef stxxl::vector<string> dictionaryVector;
-typedef stxxl::vector<int> position;
 #endif //BACKEND_DEFINITION_H
